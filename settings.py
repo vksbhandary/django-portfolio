@@ -22,6 +22,8 @@ INSTALLED_ADDONS = [
     # </INSTALLED_ADDONS>
 ]
 
+SECRET_KEY = "Our secret key"
+
 # Now we will load auto-configured settings for addons. See:
 #
 #   http://docs.divio.com/en/latest/reference/configuration-aldryn-config.html
@@ -44,6 +46,8 @@ aldryn_addons.settings.load(locals())
 
 INSTALLED_APPS.extend([
     # Extend the INSTALLED_APPS setting by listing additional applications here
+    'django_summernote'
+
 ])
 
 # To see the settings that have been applied, use the Django diffsettings 
