@@ -1,0 +1,6 @@
+{
+    "installed-apps": [
+        "django_summernote"
+    ],
+    "package-name": "django-summernote"
+}
