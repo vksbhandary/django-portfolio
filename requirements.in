@@ -3,3 +3,4 @@ https://control.divio.com/api/v1/apps/serve/aldryn-addons/1.1.0/7a2d5a44-16e2-4e
 https://control.divio.com/api/v1/apps/serve/aldryn-django/2.2.7.2/2c6003d7-cd0a-47fc-9d02-b504f2243683/aldryn-django-2.2.7.2.tar.gz#egg=aldryn-django==2.2.7.2
 # </INSTALLED_ADDONS>
 https://github.com/summernote/django-summernote/archive/0.8.11.4.zip#egg=django-summernote==0.8.11.4
+https://github.com/encode/django-rest-framework/archive/3.9.3.zip#egg=djangorestframework==3.9.3
