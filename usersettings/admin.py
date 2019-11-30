@@ -14,7 +14,7 @@ admin.site.register(SocialURL,SocialURLAdmin)
 
 class UserProfileAdmin(SummernoteModelAdmin):
     summernote_fields = ('bio',)
-    list_display = ('title', 'user')
+    list_display = ('user')
 
 admin.site.register(UserProfile, UserProfileAdmin)
 
