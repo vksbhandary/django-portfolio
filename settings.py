@@ -51,10 +51,6 @@ INSTALLED_APPS.extend([
 
 LANGUAGE_CODE = 'en' #default language
 
-LANGUAGES = (
-  ('en', _('English')),
-)
-
 # To see the settings that have been applied, use the Django diffsettings 
 # management command. 
 # See https://docs.divio.com/en/latest/how-to/configure-settings.html#list
