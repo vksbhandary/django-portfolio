@@ -5,7 +5,7 @@ from django.contrib import admin
 
 # Register your models here.
 from django_summernote.admin import SummernoteModelAdmin
-from .models import UserProfile, SocialURL, ProfileEntries, UserSkill, SiteSetting
+from .models import UserProfile, SocialURL, SiteSetting
 
 class SocialURLAdmin(admin.ModelAdmin):
     list_display = ('type', 'link')
