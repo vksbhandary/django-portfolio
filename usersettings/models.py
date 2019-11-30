@@ -57,7 +57,7 @@ class SiteSetting(IndexedTimeStampedModel):
     fblink = models.URLField(max_length=1024,blank=True, default=None, null=True, verbose_name="Facebook Page link")
     locale = models.CharField(max_length=150,blank=True, default=None, null=True, verbose_name = "Site Locale")
     icon = models.ImageField(upload_to='icon/%Y/%m/%d', verbose_name = "Site Favicon",default=None, null=True,blank=True)
-    iconurl = models.URLField(max_length=1024,blank=True, verbose_name = "Favicon url",default=None, null=True, verbose_name="Site Favicon url")
+    iconurl = models.URLField(max_length=1024,blank=True, verbose_name = "Favicon url",default=None, null=True)
     site_name = models.CharField(max_length=150,blank=True, default=None, null=True, verbose_name = "FB site name")
     def __str__(self):
         return self.defprofile.__str__()
