@@ -46,7 +46,8 @@ INSTALLED_APPS.extend([
     # Extend the INSTALLED_APPS setting by listing additional applications here
     'django_summernote',
     'rest_framework',
-    'posts'
+    'posts',
+    'usersettings'
 ])
 
 LANGUAGE_CODE = 'en' #default language
