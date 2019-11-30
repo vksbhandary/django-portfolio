@@ -10,6 +10,7 @@
 # INSTALLED_ADDONS is a list of self-configuring Divio Cloud addons - see the
 # Addons view in your project's dashboard. See also the addons directory in 
 # this project, and the INSTALLED_ADDONS section in requirements.in.
+from django.utils.translation import ugettext_lazy as _
 
 INSTALLED_ADDONS = [
     # Important: Items listed inside the next block are auto-generated.
