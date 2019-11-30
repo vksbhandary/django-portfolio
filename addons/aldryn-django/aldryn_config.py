@@ -69,8 +69,8 @@ class Form(forms.BaseForm):
     )
     disable_default_language_prefix = forms.CheckboxField(
         'Remove URL language prefix for default language',
-        required=False,
-        initial=False,
+        required=True,
+        initial=True,
         help_text=(
             'For example, http://example.com/ rather than '
             'http://example.com/en/ if en (English) is the default language.'
