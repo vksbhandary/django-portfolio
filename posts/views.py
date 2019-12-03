@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .model import Post
+from .models import Post
 from django.core.paginator import Paginator
 
 # Create your views here.
