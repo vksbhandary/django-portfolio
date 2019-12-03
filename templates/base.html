@@ -1,1 +1,115 @@
-main
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block sitetitle %}
+         <title> {{ site.title|default:"Vikas Bhandary" }}  </title>
+        {% endblock %}
+        <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {% block meta %}
+        {% endblock %}
+
+    </head>
+
+    <body>
+      {% block header%}
+      <header>
+      <nav class="navbar bar-default navbar-expand-sm navbar-dark bg-dark">
+
+          <a class="navbar-brand" href="#">Vikas Bhandary</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse float-right" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto ">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Blog  <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About me</a>
+              </li>
+              
+            </ul>
+          </div>
+
+        </nav>
+      </header>
+      {% endblock header%}
+
+
+    {% block content %}
+
+    <div class="container page section">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 blog">
+          <a href="">
+            <img src="img/profile.png" class="img-fluid blog-img" />
+          <h2>blog title</h2>
+
+        </a>
+        </div>
+      </div>
+      </div>
+
+    {% endblock content %}
+
+<footer>
+          <div class="content container">
+               <div class="row">
+                  <div class="col-sm-4">
+                      <h4>Want to contact me?</h4>
+                      <p> I'll be more than happy to get in touch. Please send me an email on
+                        <a class="phone" href="mailto:vksbhandary@gmail.com">vksbhandary@gmail.com</a>
+                      </p>
+
+               </div>
+                  <div class="col-sm-4">
+                       <h4>More Links</h4>
+                 <nav class="navbar  navbar-default">
+
+                  <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">About Me</a></li>
+                    <li><a href="#">Research Work</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Blog</a></li>
+                  </ul>
+                </nav>
+                  </div>
+                   <div class="col-sm-4">
+                       <h4>Follow me on</h4>
+                       <a  class="twitter" href="#"><i class="fab fa-3x fa-twitter-square"></i></a>
+                       <a class="" href="#"><i class="fab  fa-3x  fa-github-square"></i></a>
+                       <a class="" href="#"><i class="fab  fa-3x fa-linkedin"></i></a>
+                       <a class="" href="#"><i class="fab  fa-3x fa-facebook"></i></a>
+                       <a class="insta" href="#"><i class="fab  fa-3x fa-instagram"></i></a>
+
+                  </div>
+              </div><!-- row-->
+              <div class="row">
+                  <div class="col-sm-12">
+                      <p class="main"> All contents are released under MIT license <a href="mailto:vikasbhandary.com.np">vikasbhandary.com.np</a>.<p>
+                  </div>
+              </div>
+
+          </div>
+  </footer>
+
+
+  <a href="#" class="back-to-top">Back to Top</a>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+{% block site_js %}
+<script src="{% static 'js/myscript.js' %}"></script>
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,233 @@
+.profile-img{
+position: relative;
+width:280px;
+top: -290px;
+
+}
+.profile-head{
+  
+      text-align: center;
+      /* background-color: blue; */
+          /* background-color: #2f2d9438; */
+          background-color: #E4D29D;
+/* background-image: linear-gradient(to bottom, #f6f7be, #3c9a2d); */
+/* border-top: 20px solid rgba(224, 206, 154, .5); */
+      height: 333px;
+}
+.profile-details{
+  padding-top: 30px;
+  padding-bottom: 30px;
+  /* text-align: center; */
+}
+
+a.back-to-top {
+  display: none;
+  width: 60px;
+  height: 60px;
+  text-indent: -9999px;
+  position: fixed;
+  z-index: 999;
+  right: 20px;
+  bottom: 20px;
+  background: #27AE61 url("../img/up-arrow.png") no-repeat center 43%;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+}
+
+/* Sections */
+.page.section .blogs h2,.page.section .intro h2{
+font-size: 1.8em !important;
+}
+
+.intro .wrapper{
+  padding-bottom: 30px;
+}
+
+.centered-btn{
+  text-align: center;
+}
+.page.section{
+  padding-bottom: 30px;
+}
+.blog-slider a{
+color: black;
+padding-right: 20px;
+}
+.black-button{
+  background-color: #343a40;
+  color: white;
+}
+.black-button:hover{
+    color: white;
+}
+
+/* .owl-item{
+  margin-right: 10px;
+  width: 10% !important;
+} */
+
+/* .owl-item {
+    margin-right: 30px;
+} */
+
+.blog-slider a:hover{
+  text-decoration: none;
+
+}
+.blog-img{
+  height: 200px;
+}
+/* header .navbar {
+    transition: all .5s ease-out;
+} */
+
+@-webkit-keyframes menu_sticky {
+  0%  {margin-top:-75px;opacity: 0;}
+  50%  {margin-top: -64px;opacity: 0;}
+  100% {margin-top: 0;opacity: 1;}
+}
+@keyframes menu_sticky {
+  0%  {margin-top:-75px;opacity: 0;}
+  50%  {margin-top: -64px;opacity: 0;}
+  100% {margin-top: 0;opacity: 1;}
+}
+
+header .navbar.fixed-top {
+    position: fixed !important;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: #000f32;
+    margin: 0;
+    padding-top: 0;
+    box-shadow: 0px 13px 35px -12px rgba(35,35,35,0.15);
+    -webkit-animation: menu_sticky 0.7s ease-in-out;
+    animation: menu_sticky 0.7s ease-in-out;
+}
+
+/* Footer section */
+
+
+footer{
+    /* background: rgb(59, 89, 152); */
+    background: #343a40;
+    color: white;
+    font-size: .8em;
+    padding: 20px 0 50px 0;
+    //background-image: linear-gradient(to bottom, #e3ec72, #f7f7ee);
+    font-weight: 400;
+    font-size: 0.8em;
+
+}
+footer a {
+    color: white;
+    font-weight: 700;
+}
+
+footer a:hover {
+    text-decoration: none;
+}
+footer .phone{
+    font-size: .9em;
+
+    color: blue;
+    font-weight: 700;
+
+}
+footer .navbar{
+    margin-bottom: 0;
+    min-height: 0;
+
+}
+footer .navbar-default {
+  background: transparent;
+  border: none;
+  margin-right: 40px;
+}
+footer .nav-pills>li a{
+    padding-top: 0;
+    padding-bottom: 0;
+    text-decoration: none;
+    color: white !important;
+}
+footer .nav-pills>li a:hover{
+     background: transparent;
+}
+
+footer p.main{
+    text-align: center;
+}
+
+footer .fa{
+    font-size: 3em;
+}
+
+
+footer a.gplus:hover {
+    text-decoration: none;
+    color: red;
+}
+
+
+footer a.insta:hover {
+    text-decoration: none;
+    color: #c9302c;
+}
+
+
+
+footer a.twitter:hover {
+    text-decoration: none;
+    color: #31b0d5;
+}
+
+footer .row {
+
+    padding-top: 20px;
+}
+
+footer .nav-pills>li{
+  display: inline-block;
+  float: left;
+clear: left;
+}
+ul.nav.nav-pills{
+  display: block;
+}
+
+header .background{
+  background:url(../img/mac.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 500px;
+}
+
+.greetings{
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+  align-items: center;
+  display: grid;
+}
+.greetings{
+  font-size: 2em;
+  color: white;
+}
+.greet{
+      font-size: 2em;
+}
+.about-me{
+      font-size: 1.2em;
+      padding-bottom: 10px;
+      text-align: justify;
+}
+.about-me-more{
+    font-size: .8em;
+    text-align: justify;
+}
+/* header, .page.container{
+  padding-bottom: 30px;
+} */
