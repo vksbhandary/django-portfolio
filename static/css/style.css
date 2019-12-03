@@ -4,15 +4,19 @@ width:280px;
 top: -290px;
 
 }
+
 .profile-head{
-  
       text-align: center;
       /* background-color: blue; */
-          /* background-color: #2f2d9438; */
-          background-color: #E4D29D;
-/* background-image: linear-gradient(to bottom, #f6f7be, #3c9a2d); */
-/* border-top: 20px solid rgba(224, 206, 154, .5); */
+      /* background-color: #2f2d9438; */
+      /*background-color: #E4D29D;*/
+      /* background-image: linear-gradient(to bottom, #f6f7be, #3c9a2d); */
+      /* border-top: 20px solid rgba(224, 206, 154, .5); */
+      /*background-image: linear-gradient(to bottom, #3ce6987d, #007bff);*/
       height: 333px;
+      margin-top: 48px;
+
+
 }
 .profile-details{
   padding-top: 30px;
@@ -116,10 +120,9 @@ footer{
     color: white;
     font-size: .8em;
     padding: 20px 0 50px 0;
-    //background-image: linear-gradient(to bottom, #e3ec72, #f7f7ee);
+    /* background-image: linear-gradient(to bottom, #e3ec72, #f7f7ee); */
     font-weight: 400;
     font-size: 0.8em;
-
 }
 footer a {
     color: white;
@@ -195,15 +198,6 @@ clear: left;
 }
 ul.nav.nav-pills{
   display: block;
-}
-
-header .background{
-  background:url(../img/mac.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: 500px;
 }
 
 .greetings{

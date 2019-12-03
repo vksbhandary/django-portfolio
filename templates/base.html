@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{% static 'plugins/fontawesome/css/all.min.css' %}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         {% block meta %}
@@ -19,7 +19,7 @@
     <body>
       {% block header%}
       <header>
-      <nav class="navbar bar-default navbar-expand-sm navbar-dark bg-dark">
+      <nav class="navbar bar-default fixed-top navbar-expand-sm navbar-dark bg-dark">
 
           <a class="navbar-brand" href="#">Vikas Bhandary</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,29 +34,16 @@
               <li class="nav-item">
                 <a class="nav-link" href="about.html">About me</a>
               </li>
-              
+
             </ul>
           </div>
 
         </nav>
       </header>
       {% endblock header%}
-
+      <div class="top-spacing"></div>
 
     {% block content %}
-
-    <div class="container page section">
-      <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 blog">
-          <a href="">
-            <img src="img/profile.png" class="img-fluid blog-img" />
-          <h2>blog title</h2>
-
-        </a>
-        </div>
-      </div>
-      </div>
 
     {% endblock content %}
 
@@ -71,16 +58,13 @@
 
                </div>
                   <div class="col-sm-4">
-                       <h4>More Links</h4>
-                 <nav class="navbar  navbar-default">
-
-                  <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#">About Me</a></li>
-                    <li><a href="#">Research Work</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">Blog</a></li>
-                  </ul>
-                </nav>
+                       <h4> Get Latest Updates</h4>
+                 <div class="input-group">
+  <input type="text" class="form-control" placeholder="Recipient's Email" aria-label="Recipient's Email" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button">Subscribe</button>
+  </div>
+</div>
                   </div>
                    <div class="col-sm-4">
                        <h4>Follow me on</h4>
@@ -94,7 +78,8 @@
               </div><!-- row-->
               <div class="row">
                   <div class="col-sm-12">
-                      <p class="main"> All contents are released under MIT license <a href="mailto:vikasbhandary.com.np">vikasbhandary.com.np</a>.<p>
+                      <p class="main"> All contents are released under MIT license
+                      <br> <a href="mailto:vikasbhandary.com.np">vikasbhandary.com.np</a>.<p>
                   </div>
               </div>
 
@@ -103,8 +88,12 @@
 
 
   <a href="#" class="back-to-top">Back to Top</a>
-<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 
+<!-- libraries which dont need jquery -->
+{% block otherjs %}
+{% endblock otherjs %}
+<!-- end otherjs block -->
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 {% block site_js %}
