@@ -6,6 +6,6 @@ from django.conf import settings
 from .views import home_view
 
 urlpatterns = [
-    url(r"^$", views.home_view, name ="home_page"),
+    url(r"^$", home_view, name ="home_page"),
     # path('/', home_view, name ="home_page"),
 ]
