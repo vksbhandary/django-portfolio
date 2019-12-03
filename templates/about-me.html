@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block content %}
+
+<div class="container-fluid profile-head particles top-spacing" style="background-image: url({% static 'img/triangles.svg' %}); background-size: cover;">
+  <canvas id="particles" class="hidden-xs"></canvas>
+  <img class="img-fluid rounded-circle profile-img" src="img/profile.png">
+</div>
+
+  <div class="container page profile-details ">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 intro">
+          <h2>Hi there!</h2>
+          <div class="wrapper">
+          <div class="about-me">
+          </div>
+
+          <div class="about-me-more">
+            <br>
+            <br>
+            </div>
+        </div>
+        
+         </div>
+        </div>
+  </div>
+{% endblock content %}
+
+
+{% block otherjs %}
+  <script src="{% static 'js/jq.js' %}"></script>
+  <script src="{% static 'js/TweenMax.min.js' %}"></script>
+  <script src="{% static 'js/particles.js' %}"></script>
+
+{% endblock otherjs %}
+
+

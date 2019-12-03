@@ -58,6 +58,9 @@ class Tag(SluggedModel):
     title= models.CharField(max_length=50,unique=True, verbose_name = "Tag name")
     count =  models.PositiveIntegerField(default=0,verbose_name = "Post Counts")
 
+    def get_absolute_url(self):
+        return "/tag/"+self.slug
+
     def save(self,*args, **kwargs):
         slug = get_uniqueslug(Tag,self.title)
         # if its new record
