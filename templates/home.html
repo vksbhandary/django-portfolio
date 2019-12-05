@@ -2,22 +2,38 @@
 {% load static from staticfiles %}
 
 {% block content %}
-<h2>blog</h2>
-  <div class="container page blog-details ">
+
+  <div class="container page blog-list ">
       <div class="row">
         <div class="col-md-2"></div>
-        <div class="col-md-8 intro">
-          
-          <div class="wrapper">
-          <div class="about-me">
-          </div>
+        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+          <h2>Blog Posts</h2>
 
-          <div class="about-me-more">
-            <br>
-            <br>
-            </div>
-        </div>
-        
+          {% for c in posts %}
+            <a class="row" href="/{{ c.slug }}">
+                <div class="img col col-5"> 
+                  <!-- if no default blog featured image -->
+                  {% if c.featuredimage %}
+                    <img class="img-fluid" src="{{ c.featuredimage }}">
+                  {% elif c.featuredurl %}
+                    <img class="img-fluid" src="{{ c.featuredurl }}">
+                  {% else %}
+                    <img class="img-fluid" src="{{ c.featuredurl }}">
+                  {% endif %}
+                
+                </div>
+                <div class="col col-7">
+                                  <h2>{{ c.title }}</h2>
+                  <writer>{{ c.author }}   
+                    <span>
+                      <i class="fa fa-clock-o" aria-hidden="true"></i>{{ c.published.date }}
+                    </span>
+                  </writer>
+                  <p>{{ c.content|striptags|truncatewords:20 }}...</p>
+                </div>
+            </a>
+          {% endfor %}
+          <div style="text-align: center;" >Page {{ page }} out of {{ last_page }}</div>
          </div>
         </div>
   </div>

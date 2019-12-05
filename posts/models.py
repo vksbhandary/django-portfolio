@@ -87,8 +87,8 @@ class Post(SluggedModel):
     author = models.ForeignKey(User, on_delete=models.CASCADE ,related_name ='post_author', verbose_name = "Author")
     keywords = models.CharField(max_length=512,blank=True, default=None, null=True, verbose_name = "SEO keywords")
     published = models.DateTimeField(blank=True, default=None, null=True, verbose_name = "Published at")
-    featuredimage = models.ImageField(upload_to='featured/%Y/%m/%d', verbose_name = "featured image",default=None, null=True)
-    featuredurl = models.URLField(max_length=1024, verbose_name = "featured image url",default=None, null=True)
+    featuredimage = models.ImageField(upload_to='featured/%Y/%m/%d', verbose_name = "featured image",blank=True, default=None, null=True)
+    featuredurl = models.URLField(max_length=1024, verbose_name = "featured image url",blank=True,default=None, null=True)
 
     def get_absolute_url(self):
         return "/blog/"+self.slug

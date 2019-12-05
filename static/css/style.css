@@ -4,7 +4,10 @@ width:280px;
 top: -290px;
 
 }
-
+.top-spacing{
+  min-height: 1px;
+  margin-top: 48px;
+}
 .profile-head{
       text-align: center;
       /* background-color: blue; */
@@ -14,7 +17,7 @@ top: -290px;
       /* border-top: 20px solid rgba(224, 206, 154, .5); */
       /*background-image: linear-gradient(to bottom, #3ce6987d, #007bff);*/
       height: 333px;
-      margin-top: 48px;
+      
 
 
 }
@@ -66,15 +69,6 @@ padding-right: 20px;
     color: white;
 }
 
-/* .owl-item{
-  margin-right: 10px;
-  width: 10% !important;
-} */
-
-/* .owl-item {
-    margin-right: 30px;
-} */
-
 .blog-slider a:hover{
   text-decoration: none;
 
@@ -82,9 +76,6 @@ padding-right: 20px;
 .blog-img{
   height: 200px;
 }
-/* header .navbar {
-    transition: all .5s ease-out;
-} */
 
 @-webkit-keyframes menu_sticky {
   0%  {margin-top:-75px;opacity: 0;}
@@ -112,7 +103,6 @@ header .navbar.fixed-top {
 }
 
 /* Footer section */
-
 
 footer{
     /* background: rgb(59, 89, 152); */
@@ -200,6 +190,7 @@ ul.nav.nav-pills{
   display: block;
 }
 
+/* about me related css */
 .greetings{
   min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */
@@ -222,6 +213,4 @@ ul.nav.nav-pills{
     font-size: .8em;
     text-align: justify;
 }
-/* header, .page.container{
-  padding-bottom: 30px;
-} */
+
