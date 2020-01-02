@@ -11,14 +11,11 @@ No post found
 {% else %}
 
 {% if post.featuredimage %}
-<div class="container-fluid blog-cover-image" style="background-image: {{ post.featuredimage }};"> </div>
+<div class="container-fluid blog-cover-image" style="background-image: url('{{ post.featuredimage }}');"> </div>
 {% elif c.featuredurl %}
-<div class="container-fluid blog-cover-image" style="background-image: {{ post.featuredurl }};"></div>
+<div class="container-fluid blog-cover-image" style="background-image: url('{{ post.featuredurl }}');"></div>
 {% else %}
-<div class="container-fluid blog-cover-image" style="background-image: {{ post.featuredurl }};"></div>
-
-{% endif %}
-<div class="container-fluid blog-cover-image" style="background-image: 'https://i.imgur.com/LJI8yg9.jpg';"></div>
+<div class="container-fluid blog-cover-image" style="background-image: url('https://i.imgur.com/LJI8yg9.jpg');"></div>
 {% endif %}
 
  <div class="container-fluid blog">
@@ -47,6 +44,10 @@ No post found
         </div>
       </div>
     </div>
+
+{% endif %}
+
+
 
 
 {% endblock content %}
