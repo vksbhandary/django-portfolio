@@ -13,3 +13,7 @@ def home_view(request):
 	template = 'home.html'
 	context = {'posts':blog_obj.object_list, 'page':page, 'last_page': paginator.num_pages }
 	return render(request, template,context)
+
+
+def blog_view(request):
+	pass
