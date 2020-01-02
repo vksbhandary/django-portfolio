@@ -10,7 +10,7 @@
           <h2>Blog Posts</h2>
 
           {% for c in posts %}
-            <a class="row" href="/{{ c.slug }}">
+            <a class="row post" href="/{{ c.slug }}">
                 <div class="img col col-5"> 
                   <!-- if no default blog featured image -->
                   {% if c.featuredimage %}

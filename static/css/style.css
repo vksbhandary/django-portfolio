@@ -190,27 +190,4 @@ ul.nav.nav-pills{
   display: block;
 }
 
-/* about me related css */
-.greetings{
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh; /* These two lines are counted as one :-)       */
-  align-items: center;
-  display: grid;
-}
-.greetings{
-  font-size: 2em;
-  color: white;
-}
-.greet{
-      font-size: 2em;
-}
-.about-me{
-      font-size: 1.2em;
-      padding-bottom: 10px;
-      text-align: justify;
-}
-.about-me-more{
-    font-size: .8em;
-    text-align: justify;
-}
 

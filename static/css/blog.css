@@ -1,0 +1,31 @@
+.blog-list a{
+	color: black;
+    text-decoration: none;
+}
+
+.post{
+     box-shadow: 1px 1px 1px 1px #888888;
+}
+.post:hover{
+     box-shadow: 3px 3px 3px 3px #888888;
+}
+
+
+.post a h2{
+    font-family: "Roboto Slab", sans-serif;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+.post a p{
+    font-size: .8em;
+    font-weight: 300;
+}
+
+.post{
+    -webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+        position:relative;
+}
