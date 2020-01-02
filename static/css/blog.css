@@ -160,6 +160,9 @@ h2.blog-head{
   width: 100%;
   padding-top: 50px;
 }
+.blog-content{
+	padding-bottom: 50px;
+}
 
 .figcaption{
   margin-top: 10px;
