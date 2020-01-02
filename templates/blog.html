@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block othercss %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+{% if post == None %}
+No post found
+{% else %}
+
+{% if post.featuredimage %}
+<div class="container-fluid blog-cover-image" style="background-image: {{ post.featuredimage }};"> </div>
+{% elif c.featuredurl %}
+<div class="container-fluid blog-cover-image" style="background-image: {{ post.featuredurl }};"></div>
+{% else %}
+<div class="container-fluid blog-cover-image" style="background-image: {{ post.featuredurl }};"></div>
+
+{% endif %}
+<div class="container-fluid blog-cover-image" style="background-image: 'https://i.imgur.com/LJI8yg9.jpg';"></div>
+{% endif %}
+
+ <div class="container-fluid blog">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 intro">
+          <div class="blog-content-top">
+              <h1 class="blog-title">{{ post.title }}</h1>
+              <h6 class="blog-summary">{{ post.summary }}</h6>
+              <div class="author">
+              <div class="author-img">
+              <img class="img-fluid rounded-circle profile-img" src="" crossOrigin="anonymous" />
+              </div>
+              <div class="author-name">
+              <span class="name">{{ post.author }}</span>
+              <span class="date">{{ post.created }}</span>
+              </div>
+              </div>
+              <div class="blog-content">
+                  {% autoescape off %}
+                      {{ post.content }}
+                  {% endautoescape %}
+              </div>
+
+        </div>
+        </div>
+      </div>
+    </div>
+
+
+{% endblock content %}
+
+
+{% block otherjs %}
+{% endblock otherjs %}
+
+

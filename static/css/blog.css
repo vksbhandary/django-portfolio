@@ -3,9 +3,16 @@
     text-decoration: none;
 }
 
-.post{
-     box-shadow: 1px 1px 1px 1px #888888;
+h2.blog-head{
+	padding-bottom: 30px;
 }
+.post{
+    box-shadow: 1px 1px 1px 1px #888888;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
 .post:hover{
      box-shadow: 3px 3px 3px 3px #888888;
 }
@@ -29,3 +36,141 @@
 	transition: all 0.5s ease-in-out;
         position:relative;
 }
+
+.pagecount{
+	text-align: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+
+.blog-cover-image{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
+  max-height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 300px;
+  background-position: '50% 50%';
+}
+
+.container-fluid.blog{
+  padding-top: 0px;
+}
+
+@media (max-width: 767.98px) {
+  .col-md-8 .blog-cover-image {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}
+
+
+
+
+.blog-content-top, .project-content-top{
+  padding-top: 30px;
+}
+.blog-content-top .author, .project-content-top .author {
+  margin-top: 32px;
+  display: flex;
+}
+.blog-content-top .author-name, .project-content-top .author-name{
+  margin-left: 12px;
+  display: grid;
+}
+.blog-content-top .author-img, .project-content-top .author-img{
+  height: 48px;
+  width: 48px;
+}
+.blog-content-top .date, .project-content-top .date, {
+  letter-spacing: 0px;
+  font-size: 15.8px;
+  line-height: 20px;
+  font-style: normal;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  fill: rgba(0, 0, 0, 0.54);
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.blog-content img, .blog-content div, .blog-content p, .project-content img, .project-content div, .project-content p{
+  max-width: 100%;
+}
+.blog-content ul,.project-content ul {
+  padding: 0;
+  list-style: none;
+  list-style-image: none;
+}
+.blog-content ul li, .project-content ul li{
+  margin-top: 2em;
+  font-size: 21px;
+  padding-left: 0px;
+  margin-left: 30px;
+  list-style-type: disc;
+  margin-bottom: -0.46em;
+  font-family:  Georgia, Cambria, "Times New Roman", Times, serif;
+  letter-spacing: -0.004em;
+  line-height: 1.58;
+  font-weight: 400;
+  font-style: normal;
+}
+.blog-content strong, .blog-content  b, .project-content strong, .project-content  b{
+  font-weight: 700;
+}
+
+.blog-content p, .project-content p{
+  margin-top: 2em;
+  font-size: 21px;
+  margin-bottom: -0.46em;
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  letter-spacing: -0.004em;
+  line-height: 1.58;
+  color: rgba(0, 0, 0, 0.84);
+  font-style: normal;
+  text-align: justify;
+}
+.blog-content a,.blog-content a:hover, .project-content a,.project-content a:hover{
+  color: black;
+  text-decoration: none;
+}
+.blog-content .quote, .project-content .quote{
+  font-size: 30px;
+  line-height: 44px;
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  color: rgba(0, 0, 0, 0.54);
+  font-weight: 400;
+  margin: 0;
+}
+.blog-content h2, .project-content h2{
+  margin-top: 1.72em;
+  font-size: 26px;
+  margin-bottom: -0.31em;
+  letter-spacing: -0.022em;
+  line-height: 1.18;
+  color: rgba(0, 0, 0, 0.84);
+  font-weight: 600;
+  font-style: normal;
+  font-family:  "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  margin: 0;
+}
+
+.blog-content img, .project-content img{
+  vertical-align: middle;
+  width: 100%;
+  padding-top: 50px;
+}
+
+.figcaption{
+  margin-top: 10px;
+  line-height: 1.4;
+  text-align: center;
+  font-size: 16px;
+  max-width: 728px;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.54);
+  font-family:  "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+

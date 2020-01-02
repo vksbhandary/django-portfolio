@@ -11,9 +11,10 @@
         <link rel="stylesheet" href="{% static 'plugins/fontawesome/css/all.min.css' %}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        {% block meta %}
-        {% endblock %}
         {% block othercss %}
+        {% endblock %}
+
+        {% block meta %}
         {% endblock %}
         
     </head>
@@ -23,7 +24,7 @@
       <header>
       <nav class="navbar bar-default fixed-top navbar-expand-sm navbar-dark bg-dark">
 
-          <a class="navbar-brand" href="#">Vikas Bhandary</a>
+          <a class="navbar-brand" href="/">Vikas Bhandary</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -31,10 +32,10 @@
           <div class="collapse navbar-collapse float-right" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto ">
               <li class="nav-item active">
-                <a class="nav-link" href="#">Blog  <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/blog">Blog  <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html">About me</a>
+                <a class="nav-link" href="/about">About me</a>
               </li>
 
             </ul>

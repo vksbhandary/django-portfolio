@@ -137,3 +137,12 @@ class Subscriber(models.Model):
     email = models.EmailField(max_length=254, verbose_name = "Email")
     user = models.ForeignKey(User, on_delete=models.CASCADE ,related_name ='subscribed_author', verbose_name = "User")
     subscribed = models.BooleanField(default=True ,verbose_name = "Subscribed")
+
+
+class PostSettings(models.Model):
+    class Meta:
+        verbose_name = "Post setting"
+        
+    default_thumb = models.URLField(max_length=1024, verbose_name = "Default featured thumbnail",blank=True,default=None, null=True)
+    default_featured = models.URLField(max_length=1024, verbose_name = "Default featured image",blank=True,default=None, null=True)
+    
