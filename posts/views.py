@@ -11,11 +11,16 @@ def home_view(request):
 	page = int(request.GET.get('page',1))
 	blog_obj = paginator.get_page(page)
 	template = 'home.html'
+	context = {'posts':blog_obj.object_list, 'page':page, 'last_page': paginator.num_pages }context = {'posts':blog_obj.object_list, 'page':page, 'last_page': paginator.num_pages }
+
 	if page < paginator.num_pages:
-		context = {'posts':blog_obj.object_list, 'page':page, 'next_page':page+1, 'last_page': paginator.num_pages }
-	else:
-		context = {'posts':blog_obj.object_list, 'page':page, 'last_page': paginator.num_pages }
+		context['next_page'] = page+1
 		
+	if page > 1:
+		context['prev_page'] = page-1
+	
+		
+
 	return render(request, template,context)
 
 
