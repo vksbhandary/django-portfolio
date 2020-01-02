@@ -89,6 +89,8 @@ class Post(SluggedModel):
     published = models.DateTimeField(blank=True, default=None, null=True, verbose_name = "Published at")
     featuredimage = models.ImageField(upload_to='featured/%Y/%m/%d', verbose_name = "featured image",blank=True, default=None, null=True)
     featuredurl = models.URLField(max_length=1024, verbose_name = "featured image url",blank=True,default=None, null=True)
+    featuredthumburl = models.URLField(max_length=1024, verbose_name = "featured thumbnail url",blank=True,default=None, null=True)
+
 
     def get_absolute_url(self):
         return "/blog/"+self.slug
