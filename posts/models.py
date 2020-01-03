@@ -148,3 +148,4 @@ class PostSettings(models.Model):
     default_thumb = models.URLField(max_length=1024, verbose_name = "Default featured thumbnail",blank=True,default=None, null=True)
     default_featured = models.URLField(max_length=1024, verbose_name = "Default featured image",blank=True,default=None, null=True)
     
+    

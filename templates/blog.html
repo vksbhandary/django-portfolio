@@ -27,7 +27,14 @@ No post found
               <h6 class="blog-summary">{{ post.summary }}</h6>
               <div class="author">
               <div class="author-img">
-              <img class="img-fluid rounded-circle profile-img" src="" crossOrigin="anonymous" />
+                
+              {% if author_image_url %}
+              <img class="img-fluid rounded-circle profile-img" src="{{ author_image_url }}" crossOrigin="anonymous" />
+              {% elif author_image %}
+              <img class="img-fluid rounded-circle profile-img" src="{{ author_image }}" crossOrigin="anonymous" />
+              {% else %}
+              <img class="img-fluid rounded-circle profile-img" src="https://i.imgur.com/jaoR39t.jpg" crossOrigin="anonymous" />
+              {% endif %}
               </div>
               <div class="author-name">
               <span class="name">{{ post.author }}</span>
@@ -44,6 +51,28 @@ No post found
         </div>
       </div>
     </div>
+{% if setting.disqusname %}
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function () {
+this.page.url = {{ page_url }};  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = {{ page_id }}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://{{ setting.disqusname }}.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endif %}
 
 {% endif %}
 

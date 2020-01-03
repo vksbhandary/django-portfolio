@@ -3,6 +3,11 @@
     text-decoration: none;
 }
 
+.blog .profile-img{
+  width: 48px;
+  height: 48px;
+}
+
 h2.blog-head{
 	padding-bottom: 30px;
 }
@@ -120,7 +125,7 @@ h2.blog-head{
 }
 
 .blog-content p, .project-content p{
-  margin-top: 2em;
+  margin-top: 1.2em;
   font-size: 21px;
   margin-bottom: -0.46em;
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
@@ -142,9 +147,9 @@ h2.blog-head{
   font-weight: 400;
   margin: 0;
 }
-.blog-content h2, .project-content h2{
+.blog-content h2, .blog-content h1, .blog-content h3{
   margin-top: 1.72em;
-  font-size: 26px;
+  padding-bottom: 1em;
   margin-bottom: -0.31em;
   letter-spacing: -0.022em;
   line-height: 1.18;
@@ -154,6 +159,22 @@ h2.blog-head{
   font-family:  "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
   margin: 0;
 }
+
+
+
+.blog-content h2{
+  font-size: 1.8em;
+}
+.blog-content h3{
+  font-size: 1.1em;
+}
+.blog-content h3{
+  font-size: 1.1em;
+}
+.blog-content h1{
+  font-size: 2.4em;
+}
+
 
 .blog-content img, .project-content img{
   vertical-align: middle;
@@ -175,5 +196,9 @@ h2.blog-head{
   font-family:  "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
   overflow-wrap: break-word;
   word-break: break-word;
+}
+
+.gist, #disqus_thread {
+  margin-top: 2.8em;
 }
 
