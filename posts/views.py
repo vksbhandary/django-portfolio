@@ -54,4 +54,16 @@ def blog_view(request, slug):
 			context['page_url'] = request.get_host() + blog.get_absolute_url()
 		
 	return render(request, template,context)
+
+
+def about_view(request):
+	setting = SiteSetting.objects.all().first()
+	template = 'about-me.html'
+	context = {}
+	if setting:
+		context['setting'] = setting
+		context['sociallinks'] = setting.defprofile.urls.all()
+		
+	return render(request, template,context)
+
 	

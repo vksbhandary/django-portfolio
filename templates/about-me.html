@@ -3,9 +3,16 @@
 
 {% block content %}
 
-<div class="container-fluid profile-head particles top-spacing" style="background-image: url({% static 'img/triangles.svg' %}); background-size: cover;">
+<div class="container-fluid profile-head particles" style="background-image: url({% static 'img/triangles.svg' %}); background-size: cover;">
   <canvas id="particles" class="hidden-xs"></canvas>
-  <img class="img-fluid rounded-circle profile-img" src="img/profile.png">
+  
+  {% if setting and setting.defprofile.imageurl %}
+              <img class="img-fluid rounded-circle author-img" src="{{ setting.defprofile.imageurl }}" crossOrigin="anonymous" />
+  {% elif setting and setting.defprofile.image %}
+  <img class="img-fluid rounded-circle profile-img" src="{{ setting.defprofile.image }}">
+  {% else %}
+  <img class="img-fluid rounded-circle profile-img" src="https://i.imgur.com/jaoR39t.jpg">
+  {% endif %}
 </div>
 
   <div class="container page profile-details ">
@@ -18,8 +25,14 @@
           </div>
 
           <div class="about-me-more">
-            <br>
-            <br>
+              {% if setting and setting.defprofile.bio %}
+              {% autoescape off %}
+                      {{ setting.defprofile.bio }}
+                  {% endautoescape %}
+              {% else %}
+              Add bio here
+              {% endif %}
+            
             </div>
         </div>
         
