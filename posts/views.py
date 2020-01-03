@@ -26,7 +26,8 @@ def home_view(request):
 		context['prev_page'] = page-1
 
 	if setting:
-		context['setting']= setting	
+		context['setting']= setting
+		context['sociallinks'] = setting.defprofile.urls.all()
 
 	return render(request, template,context)
 
@@ -45,6 +46,7 @@ def blog_view(request, slug):
 	if setting:
 		context['page_id'] = blog.slug
 		context['setting'] = setting
+		context['sociallinks'] = setting.defprofile.urls.all()
 		
 		if setting.siteurl:
 			context['page_url'] = setting.siteurl + blog.get_absolute_url()

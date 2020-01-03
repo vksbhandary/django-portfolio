@@ -95,8 +95,8 @@
                   </div>
                    <div class="col-md-12 col-lg-4">
                        <h4>Follow me on</h4>
-                       {% if setting.defprofile.urls %}
-                       {% for link in setting.defprofile.urls %}
+                       {% if sociallinks %}
+                       {% for link in sociallinks %}
                           {% if link.type == 'medium' %}
                           <a class="" href="{{ link.link }}"><i class="fab  fa-3x fa-medium"></i></a>
                           {% elif link.type == 'linkedin' %}
