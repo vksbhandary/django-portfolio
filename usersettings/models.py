@@ -32,7 +32,7 @@ class UserProfile(IndexedTimeStampedModel):
     bio = models.CharField(max_length=1024, verbose_name = "User bio")
     urls = models.ManyToManyField(SocialURL, blank=True, related_name ='user_urls', verbose_name = "User Urls")
     imageurl = models.URLField(max_length=1024,blank=True, default=None, null=True, verbose_name="Profile picture")
-    image = models.ImageField(upload_to='profile/%Y/%m/%d', verbose_name = "profile image",default=None, null=True,)
+    image = models.ImageField(upload_to='profile/%Y/%m/%d',blank=True, default=None, null=True, verbose_name = "profile image")
     
     def __str__(self):
         if self.user.get_full_name() == " ":

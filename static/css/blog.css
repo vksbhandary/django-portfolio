@@ -138,7 +138,7 @@ h2.blog-head{
   margin-bottom: -0.46em;
   
 }
-.blog-content a,.blog-content a:hover, .project-content a,.project-content a:hover{
+.blog-content a,.blog-content a:hover{
   color: black;
   text-decoration: none;
 }
@@ -152,7 +152,7 @@ h2.blog-head{
 }
 .blog-content h2, .blog-content h1, .blog-content h3{
   margin-top: 1.72em;
-  padding-bottom: 1em;
+  padding-bottom: 0.3em;
   margin-bottom: -0.31em;
   letter-spacing: -0.022em;
   line-height: 1.18;
@@ -188,6 +188,13 @@ h2.blog-head{
 }
 .blog-content{
 	padding-bottom: 50px;
+}
+
+.blog-summary{
+  color: rgba(0, 0, 0, 0.54);
+  line-height: 32px;
+  font-size: 24px;
+  font-weight: 300;
 }
 
 .figcaption{
