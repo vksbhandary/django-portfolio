@@ -48,6 +48,7 @@ class SiteSetting(IndexedTimeStampedModel):
     maxblog = models.IntegerField(verbose_name = "Max Blog on home")
     siteurl = models.URLField(max_length=1024, verbose_name = "Website url",blank=True,default=None, null=True)
     sitetitle = models.CharField(max_length=150,unique=True, verbose_name = "Site title")
+    contact_msg = models.CharField(max_length=512, blank=True, default=None, null=True,  verbose_name = "Contact Message")
     disqusname = models.CharField(max_length=150,blank=True, default=None, null=True, verbose_name = "Disqus short name")
     googleanalyticid = models.CharField(max_length=150,blank=True, default=None, null=True, verbose_name = "Google analytics ID")
     keywords = models.CharField(max_length=512,blank=True, default=None, null=True, verbose_name = "Site SEO keywords")

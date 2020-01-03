@@ -3,7 +3,13 @@
 <html lang="en">
     <head>
         {% block sitetitle %}
-         <title> {{ site.title|default:"Vikas Bhandary" }}  </title>
+        {% if setting %}
+        <title> {{ setting.sitetitle }}  </title>
+        
+        {% else %}
+        <title> Vikas Bhandary  </title>
+        {% endif %}
+        
         {% endblock %}
         <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -24,7 +30,13 @@
       <header>
       <nav class="navbar bar-default fixed-top navbar-expand-sm navbar-dark bg-dark">
 
-          <a class="navbar-brand" href="/">Vikas Bhandary</a>
+          <a class="navbar-brand" href="/">
+            {% if setting %}
+            {{ setting.sitetitle }}
+            {% else %}
+            Vikas Bhandary
+            {% endif %}
+          </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -55,8 +67,20 @@
                <div class="row">
                   <div class="col-md-12 col-lg-4">
                       <h4>Want to contact me?</h4>
-                      <p> I'll be more than happy to get in touch. Please send me an email on
-                        <a class="phone" href="mailto:vksbhandary@gmail.com">vksbhandary@gmail.com</a>
+                      <p> 
+                         
+                           {% if setting and setting.contact_msg %}
+                           {{ setting.contact_msg }}
+                           {% else %}
+                            I'll be more than happy to get in touch. Please send me an email on
+                           {% endif %} 
+                           
+                          {% if setting %} 
+                          <a class="phone" href="mailto:{{ setting.defprofile.user.email }}">{{ setting.defprofile.user.email }}</a>
+                          {% else %}
+                         
+                          <a class="phone" href="mailto:vksbhandary@gmail.com">vksbhandary@gmail.com</a>
+                          {% endif %}                        
                       </p>
 
                </div>
@@ -71,11 +95,26 @@
                   </div>
                    <div class="col-md-12 col-lg-4">
                        <h4>Follow me on</h4>
-                       <a  class="twitter" href="#"><i class="fab fa-3x fa-twitter-square"></i></a>
-                       <a class="" href="#"><i class="fab  fa-3x  fa-github-square"></i></a>
-                       <a class="" href="#"><i class="fab  fa-3x fa-linkedin"></i></a>
-                       <a class="" href="#"><i class="fab  fa-3x fa-facebook"></i></a>
-                       <a class="insta" href="#"><i class="fab  fa-3x fa-instagram"></i></a>
+                       {% if setting.defprofile.urls %}
+                       {% for link in setting.defprofile.urls %}
+                          {% if link.type == 'medium' %}
+                          <a class="" href="{{ link.link }}"><i class="fab  fa-3x fa-medium"></i></a>
+                          {% elif link.type == 'linkedin' %}
+                          <a class="" href="{{ link.link }}"><i class="fab  fa-3x fa-linkedin"></i></a>
+                          {% elif link.type == 'facebook' %}
+                          <a class="" href="{{ link.link }}"><i class="fab  fa-3x  fa-facebook"></i></a>
+                          {% elif link.type == 'twitter' %}
+                          <a  class="twitter" href="{{ link.link }}"><i class="fab fa-3x fa-twitter-square"></i></a>
+                          {% elif link.type == 'github' %}
+                          <a class="" href="{{ link.link }}"><i class="fab  fa-3x  fa-github-square"></i></a>
+                          {% endif %}
+                       {% endfor %}
+
+                       {% else %}
+                       <a class="" href="https://github.com/vksbhandary"><i class="fab  fa-3x  fa-github-square"></i></a>
+                       <a class="" href="https://www.linkedin.com/in/vksbhandary/"><i class="fab  fa-3x fa-linkedin"></i></a>
+                       <a class="" href="https://medium.com/@vksbhandary"><i class="fab  fa-3x fa-medium"></i></a>
+                       {% endif %}
 
                   </div>
               </div><!-- row-->
