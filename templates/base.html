@@ -53,14 +53,14 @@
 <footer>
           <div class="content container">
                <div class="row">
-                  <div class="col-sm-4 col-md-12">
+                  <div class="col-sm-12 col-md-4">
                       <h4>Want to contact me?</h4>
                       <p> I'll be more than happy to get in touch. Please send me an email on
                         <a class="phone" href="mailto:vksbhandary@gmail.com">vksbhandary@gmail.com</a>
                       </p>
 
                </div>
-                  <div class="col-sm-4 col-md-12">
+                  <div class="col-sm-12 col-md-4">
                        <h4> Get Latest Updates</h4>
                  <div class="input-group">
                     <input type="text" class="form-control" placeholder="Recipient's Email" aria-label="Recipient's Email" aria-describedby="basic-addon2">
@@ -69,7 +69,7 @@
                     </div>
                   </div>
                   </div>
-                   <div class="col-sm-4 col-md-12">
+                   <div class="col-sm-12 col-md-4">
                        <h4>Follow me on</h4>
                        <a  class="twitter" href="#"><i class="fab fa-3x fa-twitter-square"></i></a>
                        <a class="" href="#"><i class="fab  fa-3x  fa-github-square"></i></a>
@@ -81,8 +81,17 @@
               </div><!-- row-->
               <div class="row">
                   <div class="col-sm-12">
-                      <p class="main"> All contents are released under MIT license
-                      <br> <a href="mailto:{{ setting.defprofile.user.email|default_if_none:'vksbhandary@gmail.com' }}">{{ setting.siteurl|default_if_none:'vikasbhandary.com.np' }}</a>.<p>
+                    {% if setting %}
+                    <p class="main"> Right to contents are reserved. For more information contact 
+                      <a href="mailto:{{ setting.defprofile.user.email|default_if_none:'vksbhandary@gmail.com' }}">side admin</a>
+                    <br>
+                  {{ setting.siteurl|default_if_none:'vikasbhandary.com.np' }}</p>
+                    {% else %}
+                    <p class="main"> Right to contents are reserved. For more information contact
+                       <a href="mailto:vksbhandary@gmail.com">side admin </a>
+                    <br> vikasbhandary.com.np </p>
+                    {% endif %}
+                      
                   </div>
               </div>
 

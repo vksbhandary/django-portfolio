@@ -10,7 +10,7 @@ def home_view(request):
 	blogs = Post.objects.filter(status='published').order_by('-published')
 	setting = SiteSetting.objects.all().first()
 	max_pages = 10
-	if setting.maxblog:
+	if setting and setting.maxblog > 0:
 		max_pages = setting.maxblog
 
 	paginator = Paginator(blogs,max_pages)
@@ -24,7 +24,7 @@ def home_view(request):
 
 	if page > 1:
 		context['prev_page'] = page-1
-		
+
 	if setting:
 		context['setting']= setting	
 

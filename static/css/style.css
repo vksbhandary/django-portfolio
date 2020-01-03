@@ -190,4 +190,7 @@ ul.nav.nav-pills{
   display: block;
 }
 
+footer div.row div {
+  margin-bottom: 20px;
+}
 
