@@ -53,23 +53,23 @@
 <footer>
           <div class="content container">
                <div class="row">
-                  <div class="col-sm-4">
+                  <div class="col-sm-4 col-md-12">
                       <h4>Want to contact me?</h4>
                       <p> I'll be more than happy to get in touch. Please send me an email on
                         <a class="phone" href="mailto:vksbhandary@gmail.com">vksbhandary@gmail.com</a>
                       </p>
 
                </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-4 col-md-12">
                        <h4> Get Latest Updates</h4>
                  <div class="input-group">
-  <input type="text" class="form-control" placeholder="Recipient's Email" aria-label="Recipient's Email" aria-describedby="basic-addon2">
-  <div class="input-group-append">
-    <button class="btn btn-outline-secondary" type="button">Subscribe</button>
-  </div>
-</div>
+                    <input type="text" class="form-control" placeholder="Recipient's Email" aria-label="Recipient's Email" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button">Subscribe</button>
+                    </div>
                   </div>
-                   <div class="col-sm-4">
+                  </div>
+                   <div class="col-sm-4 col-md-12">
                        <h4>Follow me on</h4>
                        <a  class="twitter" href="#"><i class="fab fa-3x fa-twitter-square"></i></a>
                        <a class="" href="#"><i class="fab  fa-3x  fa-github-square"></i></a>
@@ -82,7 +82,7 @@
               <div class="row">
                   <div class="col-sm-12">
                       <p class="main"> All contents are released under MIT license
-                      <br> <a href="mailto:vikasbhandary.com.np">vikasbhandary.com.np</a>.<p>
+                      <br> <a href="mailto:{{ setting.defprofile.user.email|default_if_none:'vksbhandary@gmail.com' }}">{{ setting.siteurl|default_if_none:'vikasbhandary.com.np' }}</a>.<p>
                   </div>
               </div>
 

@@ -24,8 +24,9 @@ def home_view(request):
 
 	if page > 1:
 		context['prev_page'] = page-1
-	
 		
+	if setting:
+		context['setting']= setting	
 
 	return render(request, template,context)
 
