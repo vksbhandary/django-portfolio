@@ -1,9 +1,11 @@
-.profile-img{
-position: relative;
-width:280px;
-top: -290px;
 
+.profile-img {
+    position: relative;
+    height: 180px;
+    width: 180px;
+    top: -260px;
 }
+
 .top-spacing{
   min-height: 1px;
   margin-top: 47px;
