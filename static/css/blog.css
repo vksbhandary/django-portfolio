@@ -30,14 +30,16 @@ h2.blog-head{
 }
 
 
-.post a h2{
+.post > div.desc > h2{
     font-family: "Roboto Slab", sans-serif;
     font-size: 1.1em;
     font-weight: 700;
 }
-.post a p{
-    font-size: .8em;
-    font-weight: 300;
+.post > div.desc > p{
+  font-style: normal;
+  text-align: justify;
+  font-size: .8em;
+  font-weight: 300;
 }
 
 .post{
@@ -70,6 +72,7 @@ h2.blog-head{
 .container-fluid.blog{
   padding-top: 0px;
 }
+
 
 @media (max-width: 767.98px) {
   .col-md-8 .blog-cover-image {
@@ -194,9 +197,6 @@ h2.blog-head{
   vertical-align: middle;
   width: 100%;
   padding-top: 50px;
-}
-.blog-content{
-	padding-bottom: 50px;
 }
 
 .blog-summary{
