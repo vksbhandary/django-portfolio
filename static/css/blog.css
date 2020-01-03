@@ -120,12 +120,11 @@ h2.blog-head{
   font-weight: 400;
   font-style: normal;
 }
-.blog-content strong, .blog-content  b, .project-content strong, .project-content  b{
+.blog-content strong, .blog-content  b{
   font-weight: 700;
 }
 
-.blog-content , .blog-content p, .project-content p{
-  margin-top: 1.2em;
+.blog-content , .blog-content p{
   font-size: 21px;
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
   letter-spacing: -0.004em;
@@ -134,10 +133,7 @@ h2.blog-head{
   font-style: normal;
   text-align: justify;
 }
-.blog-content p, .project-content p{
-  margin-bottom: -0.46em;
-  
-}
+
 .blog-content a,.blog-content a:hover{
   color: black;
   text-decoration: none;
