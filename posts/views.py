@@ -8,7 +8,12 @@ from usersettings.models import SiteSetting, UserProfile
 
 def home_view(request):
 	blogs = Post.objects.filter(status='published').order_by('-published')
-	paginator = Paginator(blogs,1)
+	setting = SiteSetting.objects.all().first()
+	max_pages = 10
+	if setting.maxblog:
+		max_pages = setting.maxblog
+
+	paginator = Paginator(blogs,max_pages)
 	page = int(request.GET.get('page',1))
 	blog_obj = paginator.get_page(page)
 	template = 'home.html'

@@ -10,6 +10,7 @@
 
 h2.blog-head{
 	padding-bottom: 30px;
+  padding-top: 30px;
 }
 .post{
     box-shadow: 1px 1px 1px 1px #888888;
@@ -68,6 +69,10 @@ h2.blog-head{
   .col-md-8 .blog-cover-image {
     margin-left: -15px;
     margin-right: -15px;
+  }
+
+  .post div.desc a{
+    display: none;
   }
 }
 
