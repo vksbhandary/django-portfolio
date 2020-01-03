@@ -35,13 +35,15 @@ def blog_view(request, slug):
 	if creator:
 		context['author_image_url'] = creator.imageurl
 		context['author_image'] = creator.image
-		
+
 	if setting:
 		context['page_id'] = blog.slug
-		context['page_url'] = setting.siteurl + blog.get_absolute_url()
 		context['setting'] = setting
 		
-
+		if setting.siteurl:
+			context['page_url'] = setting.siteurl + blog.get_absolute_url()
+		else:
+			context['page_url'] = request.get_host() + blog.get_absolute_url()
 		
 	return render(request, template,context)
 	
