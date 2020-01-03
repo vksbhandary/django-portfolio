@@ -1,3 +1,8 @@
+
+/*
+  Blog list page design
+*/
+
 .blog-list a{
 	color: black;
     text-decoration: none;
@@ -16,6 +21,7 @@ h2.blog-head{
     box-shadow: 1px 1px 1px 1px #888888;
     padding-top: 10px;
     padding-bottom: 10px;
+    margin-bottom: 20px;
 
 }
 
@@ -71,12 +77,14 @@ h2.blog-head{
     margin-right: -15px;
   }
 
-  .post div.desc a{
+  .post > div.desc > p{
     display: none;
   }
 }
 
-
+/*
+  Single blog page design
+*/
 
 
 .blog-content-top, .project-content-top{
