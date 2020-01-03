@@ -124,16 +124,19 @@ h2.blog-head{
   font-weight: 700;
 }
 
-.blog-content p, .project-content p{
+.blog-content , .blog-content p, .project-content p{
   margin-top: 1.2em;
   font-size: 21px;
-  margin-bottom: -0.46em;
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
   letter-spacing: -0.004em;
   line-height: 1.58;
   color: rgba(0, 0, 0, 0.84);
   font-style: normal;
   text-align: justify;
+}
+.blog-content p, .project-content p{
+  margin-bottom: -0.46em;
+  
 }
 .blog-content a,.blog-content a:hover, .project-content a,.project-content a:hover{
   color: black;
