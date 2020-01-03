@@ -3,7 +3,7 @@
     text-decoration: none;
 }
 
-.blog .profile-img{
+.blog .author-img{
   width: 48px;
   height: 48px;
 }
@@ -159,7 +159,9 @@ h2.blog-head{
   font-family:  "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
   margin: 0;
 }
-
+.blog-content > h2, .blog-content > h1, .blog-content > h3{
+  padding-top: 1em;
+}
 
 
 .blog-content h2{
@@ -172,7 +174,7 @@ h2.blog-head{
   font-size: 1.1em;
 }
 .blog-content h1{
-  font-size: 2.4em;
+  font-size: 2.5rem;
 }
 
 
