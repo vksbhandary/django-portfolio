@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .models import Post
 from django.core.paginator import Paginator
 
-from usersettings.models import SiteSetting, UserProfile
+from usersettings.models import SiteSetting, UserProfile, Projects
 # Create your views here.
 from django.shortcuts import get_object_or_404
 
@@ -17,7 +17,7 @@ def handle_list_view(request, posts, is_search=False):
 	max_pages = 10
 	if setting and setting.maxblog > 0:
 		max_pages = setting.maxblog
-		
+
 	paginator = Paginator(posts,max_pages)
 	page = int(request.GET.get('page',1))
 	blog_obj = paginator.get_page(page)
@@ -86,6 +86,19 @@ def about_view(request):
 	setting = SiteSetting.objects.all().first()
 	template = 'about-me.html'
 	context = {}
+	if setting:
+		context['setting'] = setting
+		context['sociallinks'] = setting.defprofile.urls.all()
+		
+	return render(request, template,context)
+
+
+
+def project_view(request):
+	template = 'project.html'
+	setting = SiteSetting.objects.all().first()
+	projects = Projects.objects.filter(user=setting.defprofile.user)
+	context = {'projects':projects, 'count':projects.count()}
 	if setting:
 		context['setting'] = setting
 		context['sociallinks'] = setting.defprofile.urls.all()

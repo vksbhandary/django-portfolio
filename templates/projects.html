@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block othercss %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+
+  <div class="container page blog-list ">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+          <h2 class="blog-head">
+            Recent projects
+          </h2>
+          {% if count > 0 %}
+           <div class="row ">
+              {% for p in projects %}
+              <div class="col post">
+                  <div class="img row"> 
+                    <div class="img col col-5"> 
+                    {% if p.thumburl %}
+                      <img class="img-fluid" src="{{ p.thumburl }}">
+                    {% elif p.thumbnail %}
+                      <img class="img-fluid" src="{{ p.thumbnail }}">
+                    {% else %}
+                    <!-- if no default project featured image -->
+                      <img class="img-fluid" src="https://i.imgur.com/LJI8yg9.jpg">
+                    {% endif %}
+                  </div>
+                  </div>
+                  <div class="img row">
+                   <div class="col col-7 desc">
+                                    <h2>{{ c.title }}</h2>
+                  
+                  </div>
+                  </div>
+                
+              </div>
+            {% endfor %}
+          </div>
+
+          {% else %}
+            <br/>
+            <h3>No projects found.</h3>
+          {% endif %}  
+
+         </div>
+        </div>
+  </div>
+{% endblock content %}
+
+
+{% block otherjs %}
+{% endblock otherjs %}
+
+
