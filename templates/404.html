@@ -3,17 +3,18 @@
 
 {% block content %}
 
-<div class="container-fluid profile-head particles" style="background-image: url({% static 'img/triangles.svg' %}); background-size: cover;">
+<div class="container-fluid not-found-head particles" >
   <canvas id="particles" class="hidden-xs"></canvas>
- 	<div className="centered">
-      <h2>4()4</h2>
-      Link you are looking for is not present or removed!
+ 	<div class="centered not-found">
+      <h1>4()4</h1>
+      <h2>Link you are looking for is not present or removed!</h2>
       <br/>
       <br/>
-      Try visiting
+      <h3>Try visiting</h3>
       <br/>
       <br/>
-      <Link className="btn btn-dark" to="/">Home</Link>
+      <a class="btn btn-dark" href="/" role="button">Home</a>
+
       </div>
 </div>
 {% endblock content %}

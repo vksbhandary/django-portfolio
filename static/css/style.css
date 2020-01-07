@@ -6,6 +6,11 @@
     top: -260px;
 }
 
+.not-found{
+  position: relative;
+  top: -340px
+}
+
 .top-spacing{
   min-height: 1px;
   margin-top: 47px;
@@ -19,9 +24,11 @@
       /* border-top: 20px solid rgba(224, 206, 154, .5); */
       /*background-image: linear-gradient(to bottom, #3ce6987d, #007bff);*/
       height: 333px;
-      
+}
 
-
+.not-found-head{
+  text-align: center;
+  height: 433px;
 }
 .profile-details{
   padding-top: 30px;
