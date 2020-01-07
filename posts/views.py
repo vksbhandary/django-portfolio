@@ -6,6 +6,12 @@ from django.core.paginator import Paginator
 from usersettings.models import SiteSetting, UserProfile
 # Create your views here.
 
+def handler404(request, exception):
+	template = '404.html'
+	context= {}
+	return render(request, template,context)
+
+
 def home_view(request):
 	blogs = Post.objects.filter(status='published').order_by('-published')
 	setting = SiteSetting.objects.all().first()

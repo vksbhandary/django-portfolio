@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block content %}
+
+<div class="container-fluid profile-head particles" style="background-image: url({% static 'img/triangles.svg' %}); background-size: cover;">
+  <canvas id="particles" class="hidden-xs"></canvas>
+ 	<div className="centered">
+      <h2>4()4</h2>
+      Link you are looking for is not present or removed!
+      <br/>
+      <br/>
+      Try visiting
+      <br/>
+      <br/>
+      <Link className="btn btn-dark" to="/">Home</Link>
+      </div>
+</div>
+{% endblock content %}
+
+
+{% block otherjs %}
+  <script src="{% static 'js/jq.js' %}"></script>
+  <script src="{% static 'js/TweenMax.min.js' %}"></script>
+  <script src="{% static 'js/particles.js' %}"></script>
+
+{% endblock otherjs %}
+
+

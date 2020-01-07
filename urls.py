@@ -20,6 +20,8 @@ blog_dict = {
     'date_field': 'modified',
 }
 
+handler404 = 'posts.views.handler404'
+
 
 urlpatterns = [
 	path('sitemap.xml', sitemap, {'sitemaps': {'static':SiteSitemap,'blog': GenericSitemap(blog_dict, priority=0.6)} },
