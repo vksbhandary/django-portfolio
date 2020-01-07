@@ -12,7 +12,6 @@
 # this project, and the INSTALLED_ADDONS section in requirements.in.
 from django.utils.translation import ugettext_lazy as _
 
-DEBUG = False
 
 INSTALLED_ADDONS = [
     # Important: Items listed inside the next block are auto-generated.
