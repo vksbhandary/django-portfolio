@@ -12,20 +12,24 @@ def handler404(request, exception):
 	context= {}
 	return render(request, template,context)
 
-
-def home_view(request):
-	blogs = Post.objects.filter(status='published').order_by('-published')
+def handle_list_view(request, posts, is_search=False):
 	setting = SiteSetting.objects.all().first()
 	max_pages = 10
 	if setting and setting.maxblog > 0:
 		max_pages = setting.maxblog
-
-	paginator = Paginator(blogs,max_pages)
+		
+	paginator = Paginator(posts,max_pages)
 	page = int(request.GET.get('page',1))
 	blog_obj = paginator.get_page(page)
 	template = 'home.html'
-	context = {'posts':blog_obj.object_list, 'page':page, 'last_page': paginator.num_pages }
+	count = posts.count()
+
+	context = {'posts':blog_obj.object_list, 'count':count , 'page':page, 'last_page': paginator.num_pages }
 	
+	if is_search:
+		context['is_search'] = True
+		context['query'] = request.GET.get('q',None)
+
 	if page < paginator.num_pages:
 		context['next_page'] = page+1
 
@@ -37,6 +41,21 @@ def home_view(request):
 		context['sociallinks'] = setting.defprofile.urls.all()
 
 	return render(request, template,context)
+
+
+def blog_search(request):
+	template = 'home.html'
+	query = request.GET.get('q',None)
+	blogs = Post.objects.filter(title__icontains=query, status='published').order_by('-published')
+	
+	return handle_list_view(request, blogs, is_search=True)
+
+def home_view(request):
+	if not request.GET.get('q',None) is None:
+		return blog_search(request)
+	else:
+		blogs = Post.objects.filter(status='published').order_by('-published')
+		return handle_list_view(request, blogs)
 
 
 def blog_view(request, slug):
