@@ -40,11 +40,26 @@ class UserProfile(IndexedTimeStampedModel):
         else:
             return self.user.get_full_name()
 
+
+
+class Projects(models.Model):
+    class Meta:
+        verbose_name_plural = "Projects"
+        verbose_name = "Project"
+    user = models.ForeignKey(User, on_delete=models.CASCADE ,related_name ='user_project', verbose_name = "User")
+    title = models.CharField(max_length=150, default = 'other', verbose_name = "Project title")
+    thumburl = models.URLField(max_length=1024, verbose_name = "Thumbnail url",blank=True,default=None, null=True)
+    bloglink = models.URLField(max_length=1024,blank=True, default=None, null=True, verbose_name="Blog URL")
+    liveurl = models.URLField(max_length=1024, verbose_name = "Live url",blank=True,default=None, null=True)
+
+    def __str__(self):
+        return self.title
+
 class SiteSetting(IndexedTimeStampedModel):
     class Meta:
         verbose_name_plural = "Site settings"
         verbose_name = "Site settings"
-    defprofile = models.ForeignKey(UserProfile, on_delete=models.CASCADE ,related_name ='user_profile', verbose_name = "Default Profile")
+    defprofile = models.ForeignKey(UserProfile, on_delete=models.CASCADE ,related_name ='user_main', verbose_name = "Default Profile")
     maxblog = models.IntegerField(verbose_name = "Max Blog on home")
     siteurl = models.URLField(max_length=1024, verbose_name = "Website url",blank=True,default=None, null=True)
     sitetitle = models.CharField(max_length=150,unique=True, verbose_name = "Site title")
