@@ -47,10 +47,12 @@ class Projects(models.Model):
         verbose_name_plural = "Projects"
         verbose_name = "Project"
     user = models.ForeignKey(User, on_delete=models.CASCADE ,related_name ='user_project', verbose_name = "User")
-    title = models.CharField(max_length=150, default = 'other', verbose_name = "Project title")
+    title = models.CharField(max_length=150, verbose_name = "Project title")
     thumburl = models.URLField(max_length=1024, verbose_name = "Thumbnail url",blank=True,default=None, null=True)
     bloglink = models.URLField(max_length=1024,blank=True, default=None, null=True, verbose_name="Blog URL")
     liveurl = models.URLField(max_length=1024, verbose_name = "Live url",blank=True,default=None, null=True)
+    codeurl = models.URLField(max_length=1024, verbose_name = "Code url",blank=True,default=None, null=True)
+
 
     def __str__(self):
         return self.title
