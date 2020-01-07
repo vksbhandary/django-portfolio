@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 
 from usersettings.models import SiteSetting, UserProfile
 # Create your views here.
+from django.shortcuts import get_object_or_404
 
 def handler404(request, exception):
 	template = '404.html'
@@ -39,7 +40,7 @@ def home_view(request):
 
 
 def blog_view(request, slug):
-	blog = Post.objects.filter(slug=slug).first()
+	blog = get_object_or_404(Post, slug=slug)
 	setting = SiteSetting.objects.all().first()
 	creator = UserProfile.objects.filter(user=blog.author).first()
 	template = 'blog.html'
