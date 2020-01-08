@@ -1,11 +1,14 @@
 from django.shortcuts import render
 
-from .models import Post
+from .models import Post, Subscriber
 from django.core.paginator import Paginator
 
 from usersettings.models import SiteSetting, UserProfile, Projects
 # Create your views here.
 from django.shortcuts import get_object_or_404
+from django.core.validators import validate_email
+from .forms import Subscribe, Unsubscribe
+
 
 def handler404(request, exception):
 	template = '404.html'
@@ -99,6 +102,64 @@ def project_view(request):
 	setting = SiteSetting.objects.all().first()
 	projects = Projects.objects.filter(user=setting.defprofile.user)
 	context = {'projects':projects, 'count':projects.count()}
+	if setting:
+		context['setting'] = setting
+		context['sociallinks'] = setting.defprofile.urls.all()
+		
+	return render(request, template,context)
+
+def unsubscribe_view(request, slug=False):
+	context = {}
+	setting = SiteSetting.objects.all().first()
+	if slug:
+		sub = get_object_or_404(Subscriber, code=slug)
+		form = Unsubscribe(initial=sub)
+		template = 'subscribe.html'
+	else:
+		form = Unsubscribe(data=request.POST)
+		if form.is_valid():
+			sub = form.save()
+			context['unsubscribe'] = True
+			template = 'bye.html'
+
+	context['subscriber'] = sub
+
+	
+	if setting:
+		context['setting'] = setting
+		context['sociallinks'] = setting.defprofile.urls.all()
+	
+
+
+def subscribe_view(request):
+	template = 'subscribe.html'
+	setting = SiteSetting.objects.all().first()
+	email = request.POST.get('email',None)
+	name = request.POST.get('name',None)
+	context = {}
+	if email:
+		
+		try:
+		    validate_email(email)
+		except ValidationError as e:
+			context['email_error'] = True
+		else:
+			# check if email already present
+			sub = Subscriber.objects.filter(email=email).first()
+			if sub:
+				context['email_exists'] = True
+			else:
+				sub = Subscriber()
+				sub.email = email
+				sub.name = name
+				sub.save()
+				context['success'] = True
+				template = 'bye.html'
+
+			context['subscriber'] = sub
+
+	else:
+		context['form'] = Subscribe()
 	if setting:
 		context['setting'] = setting
 		context['sociallinks'] = setting.defprofile.urls.all()

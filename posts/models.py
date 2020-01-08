@@ -133,12 +133,16 @@ class Subscriber(models.Model):
     class Meta:
         verbose_name_plural = "Subscribers"
         verbose_name = "Subscriber"
-        unique_together = ('email', 'user',)
 
-    name = models.CharField(max_length=250, verbose_name = "Full name")
-    email = models.EmailField(max_length=254, verbose_name = "Email")
-    user = models.ForeignKey(User, on_delete=models.CASCADE ,related_name ='subscribed_author', verbose_name = "User")
+    name = models.CharField(max_length=250,blank=True, default=None, null=True, verbose_name = "Full name")
+    email = models.EmailField(max_length=254,unique=True, verbose_name = "Email", error_messages={'unique':"This User has already subscribed to our updates."})
     subscribed = models.BooleanField(default=True ,verbose_name = "Subscribed")
+    code = models.CharField(max_length=256, unique=True, verbose_name = "Unsubsribe code")
+    verified = models.BooleanField(default=False ,verbose_name = "Email verified subscriber")
+    
+    def save(self , *args, **kwargs):
+        self.code = get_random_string(50)
+        super(Subscriber, self).save(*args, **kwargs)
 
 
 class PostSettings(models.Model):

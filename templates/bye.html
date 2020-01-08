@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block content %}
+
+<div class="container-fluid not-found-head particles" style="background-image: url({% static 'img/triangles.svg' %}); background-size: cover;">
+  <canvas id="particles" class="hidden-xs"></canvas>
+ 	<div class="centered not-found">
+ 		{% if unsubscribe %}
+          <h1>See you soon!</h1>
+          <h2>You can subscribe later anytime.</h2>
+          {% else %}
+          <h1>Thank you!</h1>
+          <h2>You will soon hear from me.</h2>
+          {% endif %}
+      <br/>
+      <h3>In mean time you can visit</h3>
+      <br/>
+      <br/>
+      <a class="btn btn-dark" href="/blog/" role="button">Blog</a>
+
+      </div>
+</div>
+{% endblock content %}
+
+
+{% block otherjs %}
+  <script src="{% static 'js/jq.js' %}"></script>
+  <script src="{% static 'js/TweenMax.min.js' %}"></script>
+  <script src="{% static 'js/particles.js' %}"></script>
+
+{% endblock otherjs %}
+
+

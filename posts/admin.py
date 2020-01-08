@@ -24,4 +24,9 @@ class TagAdmin(admin.ModelAdmin):
 
 admin.site.register(Tag, TagAdmin)
 
-admin.site.register(Subscriber)
+
+class SubscriberAdmin(admin.ModelAdmin):
+    exclude = ("code",)
+    list_display = ('email', 'name', 'subscribed')
+
+admin.site.register(Subscriber, SubscriberAdmin)
