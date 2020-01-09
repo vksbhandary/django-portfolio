@@ -3,10 +3,11 @@ from django.forms import ModelForm
 from .models import Subscriber
 
 
-class Subscribe(ModelForm):
+class SubscribeForm(ModelForm):
 	def __init__(self, *args, **kwargs):
-		super(Subscribe, self).__init__(*args, **kwargs)
+		super(SubscribeForm, self).__init__(*args, **kwargs)
 		self.fields['code'].required = False
+		self.fields['email'].required = True
 	class Meta:
 		model = Subscriber
 		fields = ['name', 'code', 'email']
@@ -14,7 +15,7 @@ class Subscribe(ModelForm):
 		'code': forms.HiddenInput(),
 		}
 
-class Unsubscribe(ModelForm):
+class UnsubscribeForm(ModelForm):
 	class Meta:
 		model = Subscriber
 		fields = ['subscribed', 'code', 'email']

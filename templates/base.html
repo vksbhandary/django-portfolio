@@ -86,12 +86,17 @@
                </div>
                   <div class="col-md-12 col-lg-4">
                        <h4> Get Latest Updates</h4>
-                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Recipient's Email" aria-label="Recipient's Email" aria-describedby="basic-addon2">
+                 
+                  <form class="search-box" action="/subscribe/" method="post" >
+                    {% csrf_token %}
+                    <div class="input-group">
+                    <input type="email" name="email" class="form-control" required="required" placeholder="Recipient's Email" aria-label="Recipient's Email" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                      <button class="btn btn-outline-secondary" type="button">Subscribe</button>
+                      <button class="btn btn-outline-secondary" type="submit">Subscribe
+                      </button>
                     </div>
                   </div>
+                  </form>
                   </div>
                    <div class="col-md-12 col-lg-4">
                        <h4>Follow me on</h4>

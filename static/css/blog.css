@@ -16,6 +16,8 @@
 h2.blog-head{
 	padding-bottom: 30px;
   padding-top: 30px;
+  text-align: center;
+  font-size: 2.5rem;
 }
 .post{
     /*box-shadow: 1px 1px 1px 1px #888888;*/
@@ -31,14 +33,17 @@ h2.blog-head{
 
 
 .post > div.desc > h2{
-    font-family: "Roboto Slab", sans-serif;
+    /*font-family: "Roboto Slab", sans-serif;*/
     font-size: 1.8em;
-    font-weight: 700;
 }
 .post > div.desc > p{
-  font-style: normal;
-  text-align: justify;
-  font-weight: 300;
+    font-size: 21px;
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    letter-spacing: -0.004em;
+    line-height: 1.58;
+    color: rgba(0, 0, 0, 0.84);
+    font-style: normal;
+    text-align: justify;
 }
 
 .post{

@@ -7,7 +7,9 @@ from usersettings.models import SiteSetting, UserProfile, Projects
 # Create your views here.
 from django.shortcuts import get_object_or_404
 from django.core.validators import validate_email
-from .forms import Subscribe, Unsubscribe
+from .forms import SubscribeForm, UnsubscribeForm
+
+from django.forms import ValidationError
 
 
 def handler404(request, exception):
@@ -116,7 +118,7 @@ def unsubscribe_view(request, slug=False):
 		form = Unsubscribe(initial=sub)
 		template = 'subscribe.html'
 	else:
-		form = Unsubscribe(data=request.POST)
+		form = UnsubscribeForm(data=request.POST)
 		if form.is_valid():
 			sub = form.save()
 			context['unsubscribe'] = True
@@ -137,17 +139,25 @@ def subscribe_view(request):
 	email = request.POST.get('email',None)
 	name = request.POST.get('name',None)
 	context = {}
+	context['form'] = SubscribeForm()
+	context['new'] =  True
 	if email:
-		
+		context['new'] = False
 		try:
 		    validate_email(email)
 		except ValidationError as e:
 			context['email_error'] = True
+			
 		else:
 			# check if email already present
 			sub = Subscriber.objects.filter(email=email).first()
 			if sub:
+				context['form'] = SubscribeForm(instance=sub)
 				context['email_exists'] = True
+				# context['form'] = SubscribeForm(instance=sub)
+				if not name is None and not name == sub.name:
+					sub.name = name
+					sub.save()
 			else:
 				sub = Subscriber()
 				sub.email = email
@@ -155,11 +165,11 @@ def subscribe_view(request):
 				sub.save()
 				context['success'] = True
 				template = 'bye.html'
+				context['form'] = None
 
 			context['subscriber'] = sub
 
-	else:
-		context['form'] = Subscribe()
+
 	if setting:
 		context['setting'] = setting
 		context['sociallinks'] = setting.defprofile.urls.all()
