@@ -28,7 +28,7 @@
     <body>
       {% block header%}
       <header>
-      <nav class="navbar bar-default fixed-top navbar-expand-sm navbar-dark bg-dark">
+      <nav class="navbar bar-default fixed-top navbar-expand-md navbar-dark bg-dark">
 
           <a class="navbar-brand" href="/">
             {% if setting %}
@@ -37,7 +37,7 @@
             Vikas Bhandary
             {% endif %}
           </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler my-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
@@ -51,6 +51,16 @@
               </li>
 
             </ul>
+            <form class="form-inline my-3" action="/" method="post">
+              {% csrf_token %}
+              
+              <div class="input-group">
+              <input name="q" required="required" type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-success" type="submit"><i class="fas fa-search"></i></button>
+              </div>
+            </div>
+            </form>
           </div>
 
         </nav>

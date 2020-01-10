@@ -16,7 +16,7 @@
 
 .top-spacing{
   min-height: 1px;
-  margin-top: 47px;
+  margin-top: 77px;
 }
 .profile-head{
       text-align: center;
@@ -63,7 +63,7 @@ font-size: 1.8em !important;
   padding-bottom: 30px;
 }
 
-.centered-btn{
+.center{
   text-align: center;
 }
 .page.section{

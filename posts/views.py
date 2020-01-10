@@ -33,7 +33,7 @@ def handle_list_view(request, posts, is_search=False):
 	
 	if is_search:
 		context['is_search'] = True
-		context['query'] = request.GET.get('q',None)
+		context['query'] = request.GET.get('q',None) or request.POST.get('q',None)
 
 	if page < paginator.num_pages:
 		context['next_page'] = page+1
@@ -50,13 +50,13 @@ def handle_list_view(request, posts, is_search=False):
 
 def blog_search(request):
 	template = 'home.html'
-	query = request.GET.get('q',None)
+	query = request.GET.get('q',None) or request.POST.get('q',None)
 	blogs = Post.objects.filter(title__icontains=query, status='published').order_by('-published')
 	
 	return handle_list_view(request, blogs, is_search=True)
 
 def home_view(request):
-	if not request.GET.get('q',None) is None:
+	if not request.GET.get('q',None) is None or not request.POST.get('q',None) is None :
 		return blog_search(request)
 	else:
 		blogs = Post.objects.filter(status='published').order_by('-published')
