@@ -6,6 +6,7 @@
 .blog-list a{
 	color: black;
     text-decoration: none;
+    background: #f5f5dc;
 }
 
 .blog .author-img{

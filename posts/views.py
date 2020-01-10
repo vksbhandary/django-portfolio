@@ -100,14 +100,18 @@ def about_view(request):
 
 
 def project_view(request):
-	template = 'project.html'
+	template = 'projects.html'
 	setting = SiteSetting.objects.all().first()
-	projects = Projects.objects.filter(user=setting.defprofile.user)
-	context = {'projects':projects, 'count':projects.count()}
+	context = {'projects':None, 'count':0}
+	# print(setting)
+	# print(setting.defprofile.user)
 	if setting:
+		print(setting.defprofile.user)
+		projects = Projects.objects.filter(user=setting.defprofile.user)
+		context = {'projects':projects, 'count':projects.count()}
 		context['setting'] = setting
 		context['sociallinks'] = setting.defprofile.urls.all()
-		
+	print(context['sociallinks'] )	
 	return render(request, template,context)
 
 def unsubscribe_view(request, slug=False):

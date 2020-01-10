@@ -6,6 +6,9 @@
     top: -260px;
 }
 
+.blog-list, .blog, .project {
+  min-height: 400px;
+}
 .not-found{
   position: relative;
   top: -340px
