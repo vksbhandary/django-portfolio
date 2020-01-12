@@ -50,7 +50,7 @@ class Projects(models.Model):
     title = models.CharField(max_length=150, verbose_name = "Project title")
     thumburl = models.URLField(max_length=1024, verbose_name = "Thumbnail url",blank=True,default=None, null=True)
     thumbnail = models.ImageField(upload_to='project/%Y/%m/%d', verbose_name = "Project Thumbnail",default=None, null=True,blank=True)
-    bloglink = models.URLField(max_length=1024,blank=True, default=None, null=True, verbose_name="Blog URL")
+    blogurl = models.URLField(max_length=1024,blank=True, default=None, null=True, verbose_name="Blog URL")
     liveurl = models.URLField(max_length=1024, verbose_name = "Live url",blank=True,default=None, null=True)
     codeurl = models.URLField(max_length=1024, verbose_name = "Code url",blank=True,default=None, null=True)
 

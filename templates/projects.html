@@ -7,7 +7,7 @@
 
 {% block content %}
 
-  <div class="container page blog-list ">
+  <div class="container page ">
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
@@ -16,10 +16,11 @@
           </h2>
           {% if count > 0 %}
            <div class="row ">
+
               {% for p in projects %}
-              <div class="col post">
-                  <div class="img row"> 
-                    <div class="img col col-5"> 
+              <div class="col  col-sm-6">
+              <div class="img  row"> 
+                    <div class="img project-hover col"> 
                     {% if p.thumburl %}
                       <img class="img-fluid" src="{{ p.thumburl }}">
                     {% elif p.thumbnail %}
@@ -28,17 +29,33 @@
                     <!-- if no default project featured image -->
                       <img class="img-fluid" src="https://i.imgur.com/LJI8yg9.jpg">
                     {% endif %}
+                    <div class="overlay">
+                      <div class="overlay-text">
+                        {% if p.codeurl %}
+                        <a class="btn btn-info" href="{{ p.codeurl }}" role="button">Code</a>
+                        {% endif %}
+                        {% if p.blogurl %}
+                        <a class="btn btn-info" href="{{ p.blogurl }}" role="button">Blog</a>
+                        {% endif %}
+                        {% if p.liveurl %}
+                        <a class="btn btn-info live" href="{{ p.liveurl }}" role="button">Live Demo</a>
+                        {% endif %}
+                        
+                      </div>
+                    </div>
                   </div>
                   </div>
-                  <div class="img row">
-                   <div class="col col-7 desc">
-                                    <h2>{{ c.title }}</h2>
-                  
-                  </div>
-                  </div>
+                  <div class="row">
+                   <div class="col desc">
+                                    <h4>{{ p.title }}</h4>
+              
                 
               </div>
+              </div>
+          </div>
+            
             {% endfor %}
+            
           </div>
 
           {% else %}
