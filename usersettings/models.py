@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from posts.models import IndexedTimeStampedModel
+from posts.models import IndexedTimeStampedModel, SluggedModel
 
 # Create your models here.
 URL_TYPE = {
@@ -42,12 +42,14 @@ class UserProfile(IndexedTimeStampedModel):
 
 
 
-class Projects(models.Model):
+class Projects(SluggedModel):
     class Meta:
         verbose_name_plural = "Projects"
         verbose_name = "Project"
     user = models.ForeignKey(User, on_delete=models.CASCADE ,related_name ='user_project', verbose_name = "User")
-    title = models.CharField(max_length=150, verbose_name = "Project title")
+    title = models.CharField(max_length=150, unique=True, verbose_name = "Project title")
+    summary = models.CharField(max_length=125, blank=True, default=None, null=True,verbose_name = "Project summary")
+    details = models.TextField(verbose_name = "Project details")
     thumburl = models.URLField(max_length=1024, verbose_name = "Thumbnail url",blank=True,default=None, null=True)
     thumbnail = models.ImageField(upload_to='project/%Y/%m/%d', verbose_name = "Project Thumbnail",default=None, null=True,blank=True)
     blogurl = models.URLField(max_length=1024,blank=True, default=None, null=True, verbose_name="Blog URL")

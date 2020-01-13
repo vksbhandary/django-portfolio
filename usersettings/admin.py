@@ -25,7 +25,8 @@ class SiteSettingAdmin(admin.ModelAdmin):
 
 admin.site.register(SiteSetting, SiteSettingAdmin)
 
-class ProjectsAdmin(admin.ModelAdmin):
+class ProjectsAdmin(SummernoteModelAdmin):
+	summernote_fields = ('details',)
     list_display = ( 'user', 'title')
 
 admin.site.register(Projects, ProjectsAdmin)
