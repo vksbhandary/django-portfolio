@@ -13,6 +13,9 @@ from django.contrib.sitemaps import ping_google
 from datetime import datetime
 from django.utils.translation import ugettext_lazy as _
 
+from cloudinary.models import CloudinaryField
+
+
 DEFINED_POST_STATUS = (
         ('draft','Draft'),
         ('published','Published'),
