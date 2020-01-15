@@ -26,7 +26,8 @@ class SiteSettingAdmin(admin.ModelAdmin):
 admin.site.register(SiteSetting, SiteSettingAdmin)
 
 class ProjectsAdmin(SummernoteModelAdmin):
+	exclude = ("slug",)
 	summernote_fields = ('details',)
-    list_display = ( 'user', 'title')
+	list_display = ( 'user', 'title')
 
 admin.site.register(Projects, ProjectsAdmin)

@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from posts.models import IndexedTimeStampedModel, SluggedModel
+from posts.models import IndexedTimeStampedModel, SluggedModel, get_uniqueslug
+
+from cloudinary.models import CloudinaryField
+from django.template.defaultfilters import slugify
 
 # Create your models here.
 URL_TYPE = {
@@ -31,9 +34,9 @@ class UserProfile(IndexedTimeStampedModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE ,related_name ='user_profile', verbose_name = "User")
     bio = models.CharField(max_length=1024, verbose_name = "User bio")
     urls = models.ManyToManyField(SocialURL, blank=True, related_name ='user_urls', verbose_name = "User Urls")
-    imageurl = models.URLField(max_length=1024,blank=True, default=None, null=True, verbose_name="Profile picture")
-    image = models.ImageField(upload_to='profile/%Y/%m/%d',blank=True, default=None, null=True, verbose_name = "profile image")
-    
+    # imageurl = models.URLField(max_length=1024,blank=True, default=None, null=True, verbose_name="Profile picture")
+    # image = models.ImageField(upload_to='profile/%Y/%m/%d',blank=True, default=None, null=True, verbose_name = "profile image")
+    image =CloudinaryField(verbose_name = 'Profile picture',blank=True, default=None, null=True)
     def __str__(self):
         if self.user.get_full_name() == " ":
             return self.user.username
@@ -49,12 +52,24 @@ class Projects(SluggedModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE ,related_name ='user_project', verbose_name = "User")
     title = models.CharField(max_length=150, unique=True, verbose_name = "Project title")
     summary = models.CharField(max_length=125, blank=True, default=None, null=True,verbose_name = "Project summary")
-    details = models.TextField(verbose_name = "Project details")
-    thumburl = models.URLField(max_length=1024, verbose_name = "Thumbnail url",blank=True,default=None, null=True)
-    thumbnail = models.ImageField(upload_to='project/%Y/%m/%d', verbose_name = "Project Thumbnail",default=None, null=True,blank=True)
+    details = models.TextField(verbose_name = "Project details", blank=True, default=None, null=True)
+    thumbnail = CloudinaryField(verbose_name = 'Thumbnail',blank=True, default=None, null=True)
+    # thumburl = models.URLField(max_length=1024, verbose_name = "Thumbnail url",blank=True,default=None, null=True)
+    # thumbnail = models.ImageField(upload_to='project/%Y/%m/%d', verbose_name = "Project Thumbnail",default=None, null=True,blank=True)
     blogurl = models.URLField(max_length=1024,blank=True, default=None, null=True, verbose_name="Blog URL")
     liveurl = models.URLField(max_length=1024, verbose_name = "Live url",blank=True,default=None, null=True)
     codeurl = models.URLField(max_length=1024, verbose_name = "Code url",blank=True,default=None, null=True)
+
+    def save(self , *args, **kwargs):
+        slug = get_uniqueslug(Projects,self.title)
+        # if its new record
+        if self.pk is None:
+            self.slug = slug
+        # if title got changed
+        if slugify(self.title) not in self.slug and (not slugify(self.title) == ""):
+            self.slug = slug
+
+        super(Projects, self).save(*args, **kwargs)
 
 
     def __str__(self):
@@ -78,8 +93,9 @@ class SiteSetting(IndexedTimeStampedModel):
     fbappid = models.CharField(max_length=150,blank=True, default=None, null=True, verbose_name = "Twitter Handle")
     fblink = models.URLField(max_length=1024,blank=True, default=None, null=True, verbose_name="Facebook Page link")
     locale = models.CharField(max_length=150,blank=True, default=None, null=True, verbose_name = "Site Locale")
-    icon = models.ImageField(upload_to='icon/%Y/%m/%d', verbose_name = "Site Favicon",default=None, null=True,blank=True)
-    iconurl = models.URLField(max_length=1024,blank=True, verbose_name = "Favicon url",default=None, null=True)
+    icon = CloudinaryField(verbose_name = 'Favicon',blank=True, default=None, null=True)
+    # icon = models.ImageField(upload_to='icon/%Y/%m/%d', verbose_name = "Site Favicon",default=None, null=True,blank=True)
+    # iconurl = models.URLField(max_length=1024,blank=True, verbose_name = "Favicon url",default=None, null=True)
     site_name = models.CharField(max_length=150,blank=True, default=None, null=True, verbose_name = "FB site name")
     def __str__(self):
         return self.defprofile.__str__()

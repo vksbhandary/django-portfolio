@@ -51,6 +51,7 @@ INSTALLED_APPS.extend([
     'rest_framework',
     'posts',
     'usersettings',
+    'cloudinary',
 
 ])
 
