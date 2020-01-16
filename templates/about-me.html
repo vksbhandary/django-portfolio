@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
+{% load cloudinary %}
 
 {% block content %}
 
+
 <div class="container-fluid profile-head particles" style="background-image: url({% static 'img/triangles.svg' %}); background-size: cover;">
   <canvas id="particles" class="hidden-xs"></canvas>
-  
-  {% if setting and setting.defprofile.imageurl %}
-              <img class="img-fluid rounded-circle profile-img" src="{{ setting.defprofile.imageurl }}" crossOrigin="anonymous" />
-  {% elif setting and setting.defprofile.image %}
-  <img class="img-fluid rounded-circle profile-img" src="{{ setting.defprofile.image }}">
+  {% if setting and setting.defprofile.image %}
+      {% cloudinary setting.defprofile.image class="img-fluid rounded-circle profile-img" format="jpg" width=120 height=80 crop="fill" %}
+
   {% else %}
   <img class="img-fluid rounded-circle profile-img" src="https://i.imgur.com/jaoR39t.jpg">
   {% endif %}

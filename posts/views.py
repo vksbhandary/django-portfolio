@@ -71,7 +71,7 @@ def blog_view(request, slug):
 	context = {'post':blog }
 
 	if creator:
-		context['author_image_url'] = creator.imageurl
+		context['author_image_url'] = creator.image #creator.imageurl
 		context['author_image'] = creator.image
 
 	if setting:

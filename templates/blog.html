@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
+{% load cloudinary %}
 
 {% block othercss %}
 <link rel="stylesheet" href="{% static 'css/blog.css' %}">
@@ -12,8 +13,6 @@ No post found
 
 {% if post.featuredimage %}
 <div class="container-fluid blog-cover-image" style="background-image: url('{{ post.featuredimage }}');"> </div>
-{% elif c.featuredurl %}
-<div class="container-fluid blog-cover-image" style="background-image: url('{{ post.featuredurl }}');"></div>
 {% else %}
 <div class="container-fluid blog-cover-image" style="background-image: url('https://i.imgur.com/LJI8yg9.jpg');"></div>
 {% endif %}

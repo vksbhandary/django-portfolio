@@ -90,6 +90,12 @@ h2.blog-head{
   }
 }
 
+.post-img img {
+  width: 100%;
+  height: auto;
+}
+
+
 /*
   Single blog page design
 */
