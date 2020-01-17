@@ -10,9 +10,21 @@
 {% if post == None %}
 No post found
 {% else %}
-
 {% if post.featuredimage %}
-<div class="container-fluid blog-cover-image" style="background-image: url('{{ post.featuredimage }}');"> </div>
+<style>
+  .back-ground-img{
+    background-image:url('{% cloudinary_url post.featuredimage %}');
+  }
+</style>
+<div class="container-fluid blog-cover-image back-ground-img"> 
+</div>
+{% elif default_featured %}
+<style>
+  .back-ground-img{
+    background-image:url('{% cloudinary_url default_featured %}');
+  }
+</style>
+<div class="container-fluid blog-cover-image back-ground-img" > </div>
 {% else %}
 <div class="container-fluid blog-cover-image" style="background-image: url('https://i.imgur.com/LJI8yg9.jpg');"></div>
 {% endif %}
@@ -23,13 +35,13 @@ No post found
         <div class="col-md-8 intro">
           <div class="blog-content-top">
               <h1 class="blog-title">{{ post.title }}</h1>
+              {% if post.summary %}
               <h6 class="blog-summary">{{ post.summary }}</h6>
+              {% endif %}
               <div class="author">
               <div class="author-img">
                 
-              {% if author_image_url %}
-              <img class="img-fluid rounded-circle author-img" src="{{ author_image_url }}" crossOrigin="anonymous" />
-              {% elif author_image %}
+              {% if author_image %}
               <img class="img-fluid rounded-circle author-img" src="{{ author_image }}" crossOrigin="anonymous" />
               {% else %}
               <img class="img-fluid rounded-circle author-img" src="https://i.imgur.com/jaoR39t.jpg" crossOrigin="anonymous" />

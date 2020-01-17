@@ -14,6 +14,8 @@ from datetime import datetime
 from django.utils.translation import ugettext_lazy as _
 
 from cloudinary.models import CloudinaryField
+from django.core.files.uploadedfile import UploadedFile
+from cloudinary import CloudinaryResource
 
 
 DEFINED_POST_STATUS = (
@@ -26,6 +28,21 @@ SLUG_OPTIONS = {
     ('tag','Tag'),
     ('post','Post'),
 }
+
+
+
+class CloudinaryFieldFix(CloudinaryField):
+    
+    def to_python(self, value):
+        if isinstance(value, CloudinaryResource):
+            return value
+        elif isinstance(value, UploadedFile):
+            return value
+        elif value is None or value is False:
+            return value
+        else:
+            return self.parse_cloudinary_resource(value)
+
 
 def get_random_string(N=10):
         return ''.join(random.SystemRandom().choice(string.ascii_lowercase + string.digits) for _ in range(N))
@@ -90,7 +107,7 @@ class Post(SluggedModel):
     author = models.ForeignKey(User, on_delete=models.CASCADE ,related_name ='post_author', verbose_name = "Author")
     keywords = models.CharField(max_length=512,blank=True, default=None, null=True, verbose_name = "SEO keywords")
     published = models.DateTimeField(blank=True, default=None, null=True, verbose_name = "Published at")
-    featuredimage = CloudinaryField(verbose_name = 'Featured image',blank=True, default=None, null=True)
+    featuredimage = CloudinaryFieldFix(verbose_name = 'Featured image',blank=True, default=None, null=True)
     # featuredimage = models.ImageField(upload_to='featured/%Y/%m/%d', verbose_name = "featured image",blank=True, default=None, null=True)
     # featuredurl = models.URLField(max_length=1024, verbose_name = "featured image url",blank=True,default=None, null=True)
     # featuredthumburl = models.URLField(max_length=1024, verbose_name = "featured thumbnail url",blank=True,default=None, null=True)
@@ -153,7 +170,6 @@ class PostSettings(models.Model):
     class Meta:
         verbose_name = "Post setting"
         
-    default_thumb = models.URLField(max_length=1024, verbose_name = "Default featured thumbnail",blank=True,default=None, null=True)
-    default_featured = models.URLField(max_length=1024, verbose_name = "Default featured image",blank=True,default=None, null=True)
-    
+    default_thumb = CloudinaryFieldFix( verbose_name = "Default featured thumbnail",blank=True, default=None, null=True)
+    default_featured = CloudinaryFieldFix( verbose_name = "Default featured image" ,blank=True, default=None, null=True)
     

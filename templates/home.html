@@ -23,10 +23,11 @@
               {% for c in posts %}
               <a class="row post" href="/blog/{{ c.slug }}">
                   <div class="post-img col col-5"> 
-                    
+
                     {% if c.featuredimage %}
                       {% cloudinary c.featuredimage class="img-fluid" format="jpg" width=270 height=180 crop="fill" %}
-                    
+                    {% elif default_thumb %}
+                      {% cloudinary default_thumb class="img-fluid" format="jpg" width=270 height=180 crop="fill" %}
                     {% else %}
                     <!-- if no default blog featured image -->
                       <img class="img-fluid" src="https://i.imgur.com/LJI8yg9.jpg">

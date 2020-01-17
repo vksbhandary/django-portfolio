@@ -8,9 +8,36 @@ from usersettings.models import SiteSetting, UserProfile, Projects
 from django.shortcuts import get_object_or_404
 from django.core.validators import validate_email
 from .forms import SubscribeForm, UnsubscribeForm
+from .models import PostSettings
 
 from django.forms import ValidationError
+# import cloudinary
+import cloudinary
+from cloudinary import CloudinaryImage
 
+from django.contrib.sites.shortcuts import get_current_site
+
+
+def get_default_featured(context):
+	post_def = PostSettings.objects.all().first()
+	if post_def:
+		context['default_thumb'] =  post_def.default_thumb
+		context['default_featured'] = post_def.default_featured
+	return context
+
+def get_site_settings(request , context):
+	setting = SiteSetting.objects.all().first()
+	context['setting'] = None
+	context['site_url'] = get_current_site(request).domain
+	if setting:
+		context['setting'] = setting
+		context['sociallinks'] = setting.defprofile.urls.all()
+		if setting.siteurl:
+			context['site_url'] = setting.siteurl
+		
+			
+		
+	return context
 
 def handler404(request, exception):
 	template = '404.html'
@@ -18,8 +45,11 @@ def handler404(request, exception):
 	return render(request, template,context)
 
 def handle_list_view(request, posts, is_search=False):
-	setting = SiteSetting.objects.all().first()
+	
+	context = {}
+	context =  get_site_settings(request, context)
 	max_pages = 10
+	setting = context['setting']
 	if setting and setting.maxblog > 0:
 		max_pages = setting.maxblog
 
@@ -29,7 +59,13 @@ def handle_list_view(request, posts, is_search=False):
 	template = 'home.html'
 	count = posts.count()
 
-	context = {'posts':blog_obj.object_list, 'count':count , 'page':page, 'last_page': paginator.num_pages }
+	# context = {'posts':blog_obj.object_list, 'count':count , 'page':page, 'last_page': paginator.num_pages }
+	context['posts']  = blog_obj.object_list
+	context['count']  = count
+	context['page']  = page
+	context['last_page']  = paginator.num_pages
+
+
 	
 	if is_search:
 		context['is_search'] = True
@@ -41,9 +77,8 @@ def handle_list_view(request, posts, is_search=False):
 	if page > 1:
 		context['prev_page'] = page-1
 
-	if setting:
-		context['setting']= setting
-		context['sociallinks'] = setting.defprofile.urls.all()
+	context = get_default_featured(context)
+	# print(context)
 
 	return render(request, template,context)
 
@@ -64,59 +99,51 @@ def home_view(request):
 
 
 def blog_view(request, slug):
+
 	blog = get_object_or_404(Post, slug=slug)
-	setting = SiteSetting.objects.all().first()
 	creator = UserProfile.objects.filter(user=blog.author).first()
 	template = 'blog.html'
-	context = {'post':blog }
 
-	if creator:
-		context['author_image_url'] = creator.image #creator.imageurl
+	context = {'post':blog}
+
+	if creator and creator.image:
 		context['author_image'] = creator.image
 
-	if setting:
-		context['page_id'] = blog.slug
-		context['setting'] = setting
-		context['sociallinks'] = setting.defprofile.urls.all()
-		
-		if setting.siteurl:
-			context['page_url'] = setting.siteurl + blog.get_absolute_url()
-		else:
-			context['page_url'] = request.get_host() + blog.get_absolute_url()
-		
+	context['page_id'] = blog.slug
+	context =  get_site_settings(request, context)
+
+	context['page_url'] = context['site_url']  + blog.get_absolute_url()
+	context = get_default_featured(context)
+	
+
 	return render(request, template,context)
 
 
 def about_view(request):
-	setting = SiteSetting.objects.all().first()
 	template = 'about-me.html'
 	context = {}
-	if setting:
-		context['setting'] = setting
-		context['sociallinks'] = setting.defprofile.urls.all()
-		
+	context =  get_site_settings(request, context)
 	return render(request, template,context)
 
 
 
 def project_view(request):
 	template = 'projects.html'
-	setting = SiteSetting.objects.all().first()
 	context = {'projects':None, 'count':0}
-	# print(setting)
-	# print(setting.defprofile.user)
+	context =  get_site_settings(request, context)
+
+	setting = context['setting']
 	if setting:
-		print(setting.defprofile.user)
 		projects = Projects.objects.filter(user=setting.defprofile.user)
-		context = {'projects':projects, 'count':projects.count()}
-		context['setting'] = setting
-		context['sociallinks'] = setting.defprofile.urls.all()
-	print(context['sociallinks'] )	
+		context['projects'] = projects
+		context['count'] = projects.count()
+
 	return render(request, template,context)
 
+# unsubscribe via update preference link on email (untested)
 def unsubscribe_view(request, slug=False):
 	context = {}
-	setting = SiteSetting.objects.all().first()
+
 	if slug:
 		sub = get_object_or_404(Subscriber, code=slug)
 		form = Unsubscribe(initial=sub)
@@ -129,17 +156,13 @@ def unsubscribe_view(request, slug=False):
 			template = 'bye.html'
 
 	context['subscriber'] = sub
-
+	context =  get_site_settings(request, context)
 	
-	if setting:
-		context['setting'] = setting
-		context['sociallinks'] = setting.defprofile.urls.all()
-	
+	return render(request, template, context)
 
 
 def subscribe_view(request):
 	template = 'subscribe.html'
-	setting = SiteSetting.objects.all().first()
 	email = request.POST.get('email',None)
 	name = request.POST.get('name',None)
 	context = {}
@@ -173,10 +196,7 @@ def subscribe_view(request):
 
 			context['subscriber'] = sub
 
-
-	if setting:
-		context['setting'] = setting
-		context['sociallinks'] = setting.defprofile.urls.all()
+		context =  get_site_settings(request, context)
 		
 	return render(request, template,context)
 

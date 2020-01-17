@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
+{% load cloudinary %}
 
 {% block othercss %}
 <link rel="stylesheet" href="{% static 'css/blog.css' %}">
@@ -21,10 +22,8 @@
               <div class="col  col-sm-6">
               <div class="img  row"> 
                     <div class="img project-hover col"> 
-                    {% if p.thumburl %}
-                      <img class="img-fluid" src="{{ p.thumburl }}">
-                    {% elif p.thumbnail %}
-                      <img class="img-fluid" src="{{ p.thumbnail }}">
+                    {% if p.thumbnail %}
+                      {% cloudinary p.thumbnail class="img-fluid" format="jpg" width=270 height=180 crop="fill" %}
                     {% else %}
                     <!-- if no default project featured image -->
                       <img class="img-fluid" src="https://i.imgur.com/LJI8yg9.jpg">

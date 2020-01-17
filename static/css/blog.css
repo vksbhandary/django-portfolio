@@ -125,6 +125,9 @@ h2.blog-head{
   fill: rgba(0, 0, 0, 0.54);
   color: rgba(0, 0, 0, 0.54);
 }
+.blog-content{
+  margin-top: 30px;
+}
 
 .blog-content img, .blog-content div, .blog-content p, .project-content img, .project-content div, .project-content p{
   max-width: 100%;

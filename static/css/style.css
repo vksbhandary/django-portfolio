@@ -21,6 +21,14 @@
   min-height: 1px;
   margin-top: 77px;
 }
+
+
+@media (max-width: 767.98px) {
+.top-spacing{
+  min-height: 1px;
+  margin-top: 63px;
+}
+}
 .profile-head{
       text-align: center;
       /* background-color: blue; */

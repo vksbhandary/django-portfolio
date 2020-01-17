@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from posts.models import IndexedTimeStampedModel, SluggedModel, get_uniqueslug
+from posts.models import IndexedTimeStampedModel, SluggedModel, get_uniqueslug, CloudinaryFieldFix
 
 from cloudinary.models import CloudinaryField
 from django.template.defaultfilters import slugify
@@ -36,7 +36,7 @@ class UserProfile(IndexedTimeStampedModel):
     urls = models.ManyToManyField(SocialURL, blank=True, related_name ='user_urls', verbose_name = "User Urls")
     # imageurl = models.URLField(max_length=1024,blank=True, default=None, null=True, verbose_name="Profile picture")
     # image = models.ImageField(upload_to='profile/%Y/%m/%d',blank=True, default=None, null=True, verbose_name = "profile image")
-    image =CloudinaryField(verbose_name = 'Profile picture',blank=True, default=None, null=True)
+    image =CloudinaryFieldFix(verbose_name = 'Profile picture',blank=True, default=None, null=True)
     def __str__(self):
         if self.user.get_full_name() == " ":
             return self.user.username
@@ -53,7 +53,7 @@ class Projects(SluggedModel):
     title = models.CharField(max_length=150, unique=True, verbose_name = "Project title")
     summary = models.CharField(max_length=125, blank=True, default=None, null=True,verbose_name = "Project summary")
     details = models.TextField(verbose_name = "Project details", blank=True, default=None, null=True)
-    thumbnail = CloudinaryField(verbose_name = 'Thumbnail',blank=True, default=None, null=True)
+    thumbnail = CloudinaryFieldFix(verbose_name = 'Thumbnail',blank=True, default=None, null=True)
     # thumburl = models.URLField(max_length=1024, verbose_name = "Thumbnail url",blank=True,default=None, null=True)
     # thumbnail = models.ImageField(upload_to='project/%Y/%m/%d', verbose_name = "Project Thumbnail",default=None, null=True,blank=True)
     blogurl = models.URLField(max_length=1024,blank=True, default=None, null=True, verbose_name="Blog URL")
@@ -93,7 +93,7 @@ class SiteSetting(IndexedTimeStampedModel):
     fbappid = models.CharField(max_length=150,blank=True, default=None, null=True, verbose_name = "Twitter Handle")
     fblink = models.URLField(max_length=1024,blank=True, default=None, null=True, verbose_name="Facebook Page link")
     locale = models.CharField(max_length=150,blank=True, default=None, null=True, verbose_name = "Site Locale")
-    icon = CloudinaryField(verbose_name = 'Favicon',blank=True, default=None, null=True)
+    icon = CloudinaryFieldFix(verbose_name = 'Favicon',blank=True, default=None, null=True)
     # icon = models.ImageField(upload_to='icon/%Y/%m/%d', verbose_name = "Site Favicon",default=None, null=True,blank=True)
     # iconurl = models.URLField(max_length=1024,blank=True, verbose_name = "Favicon url",default=None, null=True)
     site_name = models.CharField(max_length=150,blank=True, default=None, null=True, verbose_name = "FB site name")
