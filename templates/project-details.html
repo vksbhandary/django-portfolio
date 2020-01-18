@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% load cloudinary %}
+
+{% block othercss %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+{% if post == None %}
+No project found
+{% else %}
+{% if post.image %}
+<style>
+  .back-ground-img{
+    background-image:url('{% cloudinary_url post.image %}');
+  }
+</style>
+<div class="container-fluid blog-cover-image back-ground-img"> 
+</div>
+{% elif default_featured %}
+<style>
+  .back-ground-img{
+    background-image:url('{% cloudinary_url default_featured %}');
+  }
+</style>
+<div class="container-fluid blog-cover-image back-ground-img" > </div>
+{% else %}
+<div class="container-fluid blog-cover-image" style="background-image: url('https://i.imgur.com/LJI8yg9.jpg');"></div>
+{% endif %}
+
+ <div class="container-fluid blog">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 intro">
+          <div class="blog-content-top">
+              <h1 class="blog-title">{{ post.title }}</h1>
+              {% if post.summary %}
+              <h6 class="blog-summary">{{ post.summary }}</h6>
+              {% endif %}
+              
+
+              <div class="blog-content">
+                  {% autoescape off %}
+                      {{ post.details }}
+                  {% endautoescape %}
+
+                  {% if post.codeurl %}
+                        <a class="btn btn-info" href="{{ post.codeurl }}" role="button">Code Link</a>
+                  {% endif %}
+                        
+                  {% if post.liveurl %}
+                        <a class="btn btn-info live" href="{{ post.liveurl }}" role="button">Live Demo</a>
+                  {% endif %}
+              </div>
+
+        </div>
+
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+
+
+{% endif %}
+
+
+
+
+{% endblock content %}
+
+
+{% block otherjs %}
+{% endblock otherjs %}
+
+

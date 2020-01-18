@@ -119,6 +119,29 @@ def blog_view(request, slug):
 	return render(request, template,context)
 
 
+
+def single_project_view(request, slug):
+
+	blog = get_object_or_404(Projects, slug=slug)
+	creator = UserProfile.objects.filter(user=blog.user).first()
+	template = 'project-details.html'
+
+	context = {'post':blog}
+
+	if creator and creator.image:
+		context['author_image'] = creator.image
+
+	context['page_id'] = blog.slug
+	context =  get_site_settings(request, context)
+
+	context['page_url'] = context['site_url']  + blog.get_absolute_url()
+	context = get_default_featured(context)
+	
+
+	return render(request, template,context)
+
+
+
 def about_view(request):
 	template = 'about-me.html'
 	context = {}
@@ -137,7 +160,6 @@ def project_view(request):
 		projects = Projects.objects.filter(user=setting.defprofile.user)
 		context['projects'] = projects
 		context['count'] = projects.count()
-
 	return render(request, template,context)
 
 # unsubscribe via update preference link on email (untested)

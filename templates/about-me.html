@@ -8,8 +8,7 @@
 <div class="container-fluid profile-head particles" style="background-image: url({% static 'img/triangles.svg' %}); background-size: cover;">
   <canvas id="particles" class="hidden-xs"></canvas>
   {% if setting and setting.defprofile.image %}
-      {% cloudinary setting.defprofile.image class="img-fluid rounded-circle profile-img" format="jpg" width=120 height=80 crop="fill" %}
-
+      {% cloudinary setting.defprofile.image class="img-fluid rounded-circle profile-img" format="jpg" width=180 height=180  crop="thumb" gravity="face" %}
   {% else %}
   <img class="img-fluid rounded-circle profile-img" src="https://i.imgur.com/jaoR39t.jpg">
   {% endif %}

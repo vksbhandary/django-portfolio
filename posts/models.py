@@ -107,10 +107,10 @@ class Post(SluggedModel):
     author = models.ForeignKey(User, on_delete=models.CASCADE ,related_name ='post_author', verbose_name = "Author")
     keywords = models.CharField(max_length=512,blank=True, default=None, null=True, verbose_name = "SEO keywords")
     published = models.DateTimeField(blank=True, default=None, null=True, verbose_name = "Published at")
-    featuredimage = CloudinaryFieldFix(verbose_name = 'Featured image',blank=True, default=None, null=True)
+    featuredimage = CloudinaryField(verbose_name = 'Featured image',blank=True, default=None, null=True)
     # featuredimage = models.ImageField(upload_to='featured/%Y/%m/%d', verbose_name = "featured image",blank=True, default=None, null=True)
     # featuredurl = models.URLField(max_length=1024, verbose_name = "featured image url",blank=True,default=None, null=True)
-    # featuredthumburl = models.URLField(max_length=1024, verbose_name = "featured thumbnail url",blank=True,default=None, null=True)
+    featuredthumb = CloudinaryField(verbose_name = "featured thumbnail url",blank=True, default=None, null=True)
 
 
     def get_absolute_url(self):
@@ -128,7 +128,6 @@ class Post(SluggedModel):
         if slugify(self.title) not in self.slug and (not slugify(self.title) == ""):
             self.slug = slug
 
-        print(self.published)
         if self.published is None and self.status == 'published':
             self.published = datetime.utcnow()
 
@@ -170,6 +169,6 @@ class PostSettings(models.Model):
     class Meta:
         verbose_name = "Post setting"
         
-    default_thumb = CloudinaryFieldFix( verbose_name = "Default featured thumbnail",blank=True, default=None, null=True)
-    default_featured = CloudinaryFieldFix( verbose_name = "Default featured image" ,blank=True, default=None, null=True)
+    default_thumb = CloudinaryField( verbose_name = "Default featured thumbnail",blank=True, default=None, null=True)
+    default_featured = CloudinaryField( verbose_name = "Default featured image" ,blank=True, default=None, null=True)
     

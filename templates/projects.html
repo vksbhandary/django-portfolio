@@ -8,7 +8,7 @@
 
 {% block content %}
 
-  <div class="container page ">
+  <div class="container page blog-list">
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
@@ -19,39 +19,28 @@
            <div class="row ">
 
               {% for p in projects %}
-              <div class="col  col-sm-6">
-              <div class="img  row"> 
-                    <div class="img project-hover col"> 
+              <a class="row post" href="{{ p.get_absolute_url }}">
+                  <div class="post-img col col-5"> 
+
                     {% if p.thumbnail %}
-                      {% cloudinary p.thumbnail class="img-fluid" format="jpg" width=270 height=180 crop="fill" %}
+                      {% cloudinary p.thumbnail class="img-fluid" %}
+                    {% elif default_thumb %}
+                      {% cloudinary default_thumb class="img-fluid" %}
+                    {% elif p.image %}
+                      {% cloudinary p.image class="img-fluid" format="jpg" width=270 height=180 crop="fill" %}
                     {% else %}
-                    <!-- if no default project featured image -->
+                    <!-- if no default blog featured image -->
                       <img class="img-fluid" src="https://i.imgur.com/LJI8yg9.jpg">
                     {% endif %}
-                    <div class="overlay">
-                      <div class="overlay-text">
-                        {% if p.codeurl %}
-                        <a class="btn btn-info" href="{{ p.codeurl }}" role="button">Code</a>
-                        {% endif %}
-                        {% if p.blogurl %}
-                        <a class="btn btn-info" href="{{ p.blogurl }}" role="button">Blog</a>
-                        {% endif %}
-                        {% if p.liveurl %}
-                        <a class="btn btn-info live" href="{{ p.liveurl }}" role="button">Live Demo</a>
-                        {% endif %}
-                        
-                      </div>
-                    </div>
+                  
                   </div>
+                  <div class="col col-7 desc">
+                    <h2>{{ p.title }}</h2>
+                    <p>{{ p.summary|striptags|truncatewords:20 }}...</p>
                   </div>
-                  <div class="row">
-                   <div class="col desc">
-                                    <h4>{{ p.title }}</h4>
+              </a>
+
               
-                
-              </div>
-              </div>
-          </div>
             
             {% endfor %}
             
