@@ -17,6 +17,7 @@ from cloudinary.models import CloudinaryField
 from django.core.files.uploadedfile import UploadedFile
 from cloudinary import CloudinaryResource
 
+from django_summernote.models import AbstractAttachment
 
 DEFINED_POST_STATUS = (
         ('draft','Draft'),
@@ -29,7 +30,8 @@ SLUG_OPTIONS = {
     ('post','Post'),
 }
 
-
+class SummerCloud (AbstractAttachment):
+    file = CloudinaryField(verbose_name = "File", blank=True, default=None, null=True)
 
 class CloudinaryFieldFix(CloudinaryField):
     

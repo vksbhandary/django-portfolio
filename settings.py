@@ -55,6 +55,10 @@ INSTALLED_APPS.extend([
 
 ])
 
+
+SUMMERNOTE_CONFIG = {
+    'attachment_model': 'posts.models.SummerCloud',
+}
 LANGUAGE_CODE = 'en' #default language
 
 # To see the settings that have been applied, use the Django diffsettings 
