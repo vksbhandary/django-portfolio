@@ -57,7 +57,7 @@ INSTALLED_APPS.extend([
 
 
 SUMMERNOTE_CONFIG = {
-    'attachment_model': 'posts.models.SummerCloud',
+    'attachment_model': 'posts.SummerCloud',
 }
 LANGUAGE_CODE = 'en' #default language
 
