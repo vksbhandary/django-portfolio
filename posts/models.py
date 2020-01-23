@@ -30,8 +30,8 @@ SLUG_OPTIONS = {
     ('post','Post'),
 }
 
-class SummerCloud (AbstractAttachment):
-    file = CloudinaryField(verbose_name = "File", blank=True, default=None, null=True)
+# class SummerCloud (AbstractAttachment):
+#     file = CloudinaryField(verbose_name = "File", blank=True, default=None, null=True)
 
 class CloudinaryFieldFix(CloudinaryField):
     
