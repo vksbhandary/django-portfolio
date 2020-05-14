@@ -4,9 +4,8 @@
 */
 
 .blog-list a{
-	color: black;
-    text-decoration: none;
-    background: #f5f5dc;
+  color: black;
+  text-decoration: none;
 }
 
 .blog .author-img{
@@ -44,7 +43,6 @@ h2.blog-head{
     line-height: 1.58;
     color: rgba(0, 0, 0, 0.84);
     font-style: normal;
-    text-align: justify;
 }
 
 .post{
