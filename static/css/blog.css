@@ -188,6 +188,7 @@ h2.blog-head{
 }
 .blog-content > h2, .blog-content > h1, .blog-content > h3{
   padding-top: 1em;
+  text-align: left;
 }
 
 

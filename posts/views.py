@@ -32,6 +32,9 @@ def get_site_settings(request , context):
 	if setting:
 		context['setting'] = setting
 		context['sociallinks'] = setting.defprofile.urls.all()
+		if setting.icon:
+			img = cloudinary.CloudinaryImage(setting.icon, format="ico")
+			context['favicon_url'] = img.build_url(width=32, height=32)
 		if setting.siteurl:
 			context['site_url'] = setting.siteurl
 		
