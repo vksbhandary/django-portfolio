@@ -42,7 +42,7 @@ No post found
               <div class="author-img">
                 
               {% if author_image %}
-              {% cloudinary author_image class="img-fluid rounded-circle profile-img" format="jpg" width=48 height=48  crop="thumb" gravity="face" %}
+              {% cloudinary author_image class="img-fluid rounded-circle author-img" format="jpg" width=48 height=48  crop="thumb" gravity="face" %}
               <!-- <img class="img-fluid rounded-circle author-img" src="{{ author_image }}" crossOrigin="anonymous" /> -->
               {% else %}
               <img class="img-fluid rounded-circle author-img" src="https://i.imgur.com/jaoR39t.jpg" crossOrigin="anonymous" />
