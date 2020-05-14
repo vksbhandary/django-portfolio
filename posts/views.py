@@ -33,13 +33,6 @@ def get_site_settings(request , context):
 		context['setting'] = setting
 		context['sociallinks'] = setting.defprofile.urls.all()
 		if setting.icon:
-			# print(dir(setting.icon))
-			# print(setting.icon.url_options)
-			# print(setting.icon.format)
-			# print(setting.icon.resource_type)
-			# img_name = str(setting.icon)+"."+setting.icon.format
-			# print(cloudinary.CloudinaryImage(img_name).build_url())
-			# cloudinary.CloudinaryImage(img_name).build_url(secure="true")
 			context['favicon_url'] = str(setting.icon.url).replace("http://", "https://")
 		if setting.siteurl:
 			context['site_url'] = setting.siteurl
