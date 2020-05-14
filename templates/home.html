@@ -38,7 +38,11 @@
                   </div>
                   <div class="col col-7 desc">
                                     <h2>{{ c.title }}</h2>
-                    <p>{{ c.content|striptags|truncatewords:20 }}...</p>
+                                    {% if c.summary %} 
+                                    <p>{{ c.summary|striptags|truncatewords:20 }}</p>    
+                                    {% else %} 
+                                    <p>{{ c.content|striptags|truncatewords:20 }}...</p>  
+                                    {% endif %}
                   </div>
               </a>
             {% endfor %}
