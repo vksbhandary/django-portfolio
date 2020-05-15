@@ -32,8 +32,8 @@ RUN pip-reqs compile && \
 COPY . /app
 # </SOURCE>
 # <user>
-RUN adduser -D dock_user
-USER dock_user
+RUN adduser -D dockuser
+USER dockuser
 # </user>
 # <GULP>
 # </GULP>
