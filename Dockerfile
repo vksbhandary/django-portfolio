@@ -29,10 +29,6 @@ RUN pip-reqs compile && \
 # <SOURCE>
 COPY . /app
 # </SOURCE>
-# <user>
-RUN adduser -D user
-USER user
-# </user>
 # <GULP>
 # </GULP>
 
