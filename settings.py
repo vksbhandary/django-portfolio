@@ -61,3 +61,34 @@ LANGUAGE_CODE = 'en' #default language
 # To see the settings that have been applied, use the Django diffsettings 
 # management command. 
 # See https://docs.divio.com/en/latest/how-to/configure-settings.html#list
+
+# Summernote settings
+SUMMERNOTE_THEME = 'bs4'  # Show summernote with Bootstrap4
+SUMMERNOTE_CONFIG = {
+    'iframe': True,
+    # Change editor size
+    'summernote': {
+        'airMode': False,
+        'width': '100%',
+        'height': '480',
+        'styleTags': [
+            'h1', 
+            'h2', 
+            'h3', 
+            'h4', 
+            'h5', 
+            'h6',
+            'p',
+            'pre',
+            { 
+                'tag': 'div',
+                'title': 'Figure Caption',
+                'className': 'figcaption',
+                'value': 'div',
+                'style' : 'font-weight: 300;color: rgba(0, 0, 0, 0.54);', 
+            }
+        
+	]
+    }
+    
+}
