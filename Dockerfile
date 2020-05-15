@@ -30,8 +30,8 @@ RUN pip-reqs compile && \
 COPY . /app
 # </SOURCE>
 # <user>
-RUN adduser -D dockuser
-USER dockuser
+RUN adduser -D user
+USER user
 # </user>
 # <GULP>
 # </GULP>
