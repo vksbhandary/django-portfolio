@@ -85,6 +85,7 @@ class SiteSetting(IndexedTimeStampedModel):
         verbose_name = "Site settings"
     defprofile = models.ForeignKey(UserProfile, on_delete=models.CASCADE ,related_name ='user_main', verbose_name = "Default Profile")
     maxblog = models.IntegerField(verbose_name = "Max Blog on home")
+    blog_featured_active = models.BooleanField(verbose_name = "Activate Blog featured images", default=False)
     siteurl = models.URLField(max_length=1024, verbose_name = "Website url",blank=True,default=None, null=True)
     sitetitle = models.CharField(max_length=150,unique=True, verbose_name = "Site title")
     contact_msg = models.CharField(max_length=512, blank=True, default=None, null=True,  verbose_name = "Contact Message")

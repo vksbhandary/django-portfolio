@@ -10,6 +10,7 @@
 {% if post == None %}
 No post found
 {% else %}
+{% if setting and setting.blog_featured_active %}
 {% if post.featuredimage %}
 <style>
   .back-ground-img{
@@ -27,6 +28,7 @@ No post found
 <div class="container-fluid blog-cover-image back-ground-img" > </div>
 {% else %}
 <div class="container-fluid blog-cover-image" style="background-image: url('https://i.imgur.com/LJI8yg9.jpg');"></div>
+{% endif %}
 {% endif %}
 
  <div class="container-fluid blog">
