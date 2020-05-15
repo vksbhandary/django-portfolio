@@ -114,6 +114,12 @@ class Post(SluggedModel):
     # featuredurl = models.URLField(max_length=1024, verbose_name = "featured image url",blank=True,default=None, null=True)
     featuredthumb = CloudinaryField(verbose_name = "featured thumbnail url",blank=True, default=None, null=True)
 
+    @property
+    def author_name(self):
+        if self.author.get_full_name() == " " or self.author.get_full_name() == "":
+            return self.author.username
+        else:
+            return self.author.get_full_name()
 
     def get_absolute_url(self):
         return "/blog/"+self.slug
