@@ -1,9 +1,10 @@
 
 .profile-img {
-    position: relative;
-    height: 180px;
-    width: 180px;
-    top: -260px;
+  position: absolute;
+  height: 180px;
+  width: 180px;
+  top: 160px;
+  left: calc(50% - 100px);
 }
 
 .blog-list, .blog, .project {
