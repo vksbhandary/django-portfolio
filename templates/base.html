@@ -53,9 +53,11 @@
               <li class="nav-item">
                 <a class="nav-link" href="/blog">Blogs</a>
               </li>
+              {% if setting.project_menu_active %}
               <li class="nav-item">
                 <a class="nav-link" href="/project">Projects</a>
               </li>
+              {% endif %}
 
             </ul>
             <form class="form-inline my-3" action="/" method="post">
