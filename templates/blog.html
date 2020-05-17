@@ -96,6 +96,12 @@ No post found
               <span class="name">{{ post.author_name }}</span>
               <span class="date">{{ post.created |date:'d, M Y' }}</span>
               </div>
+              <div class="share-buttons">
+                      <a class="" href="/share?site=linkedin&slug={{ post.slug }}"><i class="fab fa-2x fa-linkedin"></i></a>
+                      <a class="" href="/share?site=twitter&slug={{ post.slug }}"><i class="fab fa-2x fa-twitter-square"></i></a>
+                      <a class="" href="/share?site=facebook&slug={{ post.slug }}"><i class="fab fa-2x  fa-facebook"></i></a>
+            </div>
+            
               </div>
               <div class="blog-content">
                   {% autoescape off %}

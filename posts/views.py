@@ -16,7 +16,8 @@ import cloudinary
 from cloudinary import CloudinaryImage
 
 from django.contrib.sites.shortcuts import get_current_site
-
+from django.shortcuts import redirect
+from django.utils.http import urlencode
 
 def get_default_featured(context):
 	post_def = PostSettings.objects.all().first()
@@ -238,3 +239,30 @@ def subscribe_view(request):
 	return render(request, template,context)
 
 	
+def share_view(request):
+	site_type = request.GET.get('site',None)
+	slug = request.GET.get('slug',None)
+	context= {}
+	context =  get_site_settings(request, context)
+	if slug and site_type:
+		blog = get_object_or_404(Post, slug=slug)
+		url = context['site_url']  + blog.get_absolute_url()
+		if site_type == 'twitter':
+			title = blog.title
+			if context['setting'].twitterid :
+				tweet = title + " by @"+ context['setting'].twitterid+ " "+ url 
+			else:
+				tweet = title + " "+ url
+				
+			return redirect("https://twitter.com/intent/tweet?"+urlencode({"text":tweet}))
+		elif site_type == 'facebook':
+			return redirect("https://www.facebook.com/sharer/sharer.php?"+urlencode({"u":url}))
+		elif site_type == 'linkedin':
+			return redirect("https://www.linkedin.com/sharing/share-offsite/?"+urlencode({"url":url}))
+		else:
+			return redirect(context['site_url'])
+	else:
+		return redirect(context['site_url'])
+
+			
+

@@ -232,6 +232,14 @@ h2.blog-head{
   word-break: break-word;
 }
 
+.share-buttons{
+  right: 0px;
+  position: absolute;
+}
+.share-buttons a i{
+  color: black;
+}
+
 .gist, #disqus_thread {
   margin-top: 2.8em;
 }
