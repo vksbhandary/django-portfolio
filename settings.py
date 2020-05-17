@@ -62,6 +62,8 @@ LANGUAGE_CODE = 'en' #default language
 # management command. 
 # See https://docs.divio.com/en/latest/how-to/configure-settings.html#list
 
+USE_TZ = True
+
 # Summernote settings
 SUMMERNOTE_THEME = 'bs4'  # Show summernote with Bootstrap4
 SUMMERNOTE_CONFIG = {

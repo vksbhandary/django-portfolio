@@ -25,6 +25,33 @@
         {% endblock %}
 
         {% block meta %}
+        {% if setting.description %}
+        <meta name="description" content="{{ setting.description }}" />
+        {% endif %}
+        {% if setting.sitetitle %}
+        <meta property="og:site_name" content="{{ setting.sitetitle }}" />
+        {% endif %}
+        {% if setting.fbappid %}
+        <meta property="fb:app_id" content="{{ setting.fbappid }}" />
+        {% endif %}
+        {% if setting.fblink %}
+        <meta property="article:publisher" content="{{ setting.fblink }}" />
+        <meta property="fb:page_link" content="{{ setting.fblink }}" />
+        {% endif %}
+        {% if setting.twitterid %}
+        <meta name="twitter:handle" content="@{{ setting.twitterid }}" />
+        <meta name="twitter:creator" content="@{{ setting.twitterid }}" />
+        <meta name="twitter:site" content="@{{ setting.twitterid }}" />
+        {% endif %}
+
+        {% if setting.sitevarification %}
+        <meta name="google-site-verification" content="{{ setting.sitevarification }}" />
+        {% endif %}
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary" />
+        {% if setting.keywords %}
+        <meta property="og:keywords" content="{{ setting.keywords  }}" />
+        {% endif %}
         {% endblock %}
         
     </head>

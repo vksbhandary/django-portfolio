@@ -116,7 +116,20 @@ def blog_view(request, slug):
 
 	context['page_url'] = context['site_url']  + blog.get_absolute_url()
 	context = get_default_featured(context)
-	
+	context['meta_modified'] = blog.modified.replace(microsecond=0).isoformat()
+	if blog.keywords:
+		context['seo_tags'] = blog.keywords
+	else:
+		tags = [str(t) for t in blog.tag.all()]
+		context['seo_tags'] = ",".join(tags)
+
+	if blog.featuredimage:
+		context['og_image'] = str(blog.featuredimage.url).replace("http://", "https://")
+	elif blog.featuredthumb:
+		context['og_image'] = str(blog.featuredthumb.url).replace("http://", "https://")
+	else:
+		context['og_image'] = str(creator.image.url).replace("http://", "https://")
+
 
 	return render(request, template,context)
 
@@ -138,7 +151,7 @@ def single_project_view(request, slug):
 
 	context['page_url'] = context['site_url']  + blog.get_absolute_url()
 	context = get_default_featured(context)
-	
+
 
 	return render(request, template,context)
 

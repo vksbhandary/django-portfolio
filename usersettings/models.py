@@ -96,7 +96,7 @@ class SiteSetting(IndexedTimeStampedModel):
     sitevarification = models.CharField(max_length=150,blank=True, default=None, null=True, verbose_name = "Google Site Verification")
     description = models.CharField(max_length=150,blank=True, default=None, null=True, verbose_name = "Site Description")
     twitterid =  models.CharField(max_length=150,blank=True, default=None, null=True, verbose_name = "Twitter Handle")
-    fbappid = models.CharField(max_length=150,blank=True, default=None, null=True, verbose_name = "Twitter Handle")
+    fbappid = models.CharField(max_length=150,blank=True, default=None, null=True, verbose_name = "Facebook App ID")
     fblink = models.URLField(max_length=1024,blank=True, default=None, null=True, verbose_name="Facebook Page link")
     locale = models.CharField(max_length=150,blank=True, default=None, null=True, verbose_name = "Site Locale")
     icon = CloudinaryField(verbose_name = 'Favicon',blank=True, default=None, null=True)
