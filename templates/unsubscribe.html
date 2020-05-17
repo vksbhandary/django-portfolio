@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block othercss %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+
+  <div class="container page blog-list ">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+            <h2 class="blog-head">
+                    {%if new %}
+                    Fill following details
+                    {% elif email_exists and subscriber.subscribed %}
+                    Already subscribed!
+                    {% else %}
+                    Update your subscription
+                    {% endif %}
+            </h2>
+
+                  
+          <div class="row ">
+            <div class="col-sm-2"></div>
+              <div class="col-sm-8 form-col">
+                {% if unsubscribe %}
+                  <div class="alert alert-success">
+                    <strong>Sad to see you go!</strong> Please think again before stopping subscription.
+                  </div>
+                  {% elif success %}
+                    <div class="alert alert-success">
+                    <strong>Success!</strong> Please update your information.
+                  </div>
+                  {% elif email_error %}
+                    <div class="alert alert-warning">
+                    <strong>Invalid email!</strong> Please add your information.
+                  </div>
+                  {% elif email_exists and not subscriber.subscribed %}
+                    <div class="alert alert-success">
+                    <strong>Welcome back!</strong> You can subscribe again.
+                  </div>
+                  {% elif email_exists and subscriber.subscribed %}
+                    <div class="alert alert-success">
+                    You already subscribed in past.
+                    </div>
+                  {% endif %}
+                  
+                {% if email_exists and subscriber.subscribed %}
+                    <a href="/blog/" class="btn btn-dark btn-lg active"  aria-pressed="true" role="button">Visit Blog</a>
+                  {% else %}
+
+                  <form action="/subscription/" method="post">
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                    <div class="alert alert-success">
+                        {{ form.non_field_errors }}
+                     </div>
+                    {% endif %}
+                     {% if subscriber.name %}
+                     <h2>Hello {{ subscriber.name }}!</h2>
+                     {% else %}
+                     <h2>Hello !</h2>
+                     {% endif %}
+                    
+                    <div class="form-group">
+                        
+                        <label for="{{ form.email.id_for_label }}">Subscription active:</label>
+                        {{ form.subscribed }}
+                      </div>
+                    {{ form.code }}
+                    {{ form.email }}
+                    
+                    
+                    
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </form>
+
+                  {% endif %}
+                
+              </div>
+              <div class="col-sm-2"></div>
+          </div>
+
+         </div>
+        </div>
+  </div>
+{% endblock content %}
+
+
+{% block otherjs %}
+{% endblock otherjs %}
+
+

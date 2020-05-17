@@ -37,7 +37,8 @@ def get_site_settings(request , context):
 			context['favicon_url'] = str(setting.icon.url).replace("http://", "https://")
 		if setting.siteurl:
 			context['site_url'] = setting.siteurl
-		
+
+	context['feed_url'] = context['site_url'] + "/feed"
 			
 		
 	return context
@@ -184,16 +185,23 @@ def unsubscribe_view(request, slug=False):
 
 	if slug:
 		sub = get_object_or_404(Subscriber, code=slug)
-		form = Unsubscribe(initial=sub)
-		template = 'subscribe.html'
+		form = UnsubscribeForm(instance=sub)
+		template = 'unsubscribe.html'
+		context['subscriber'] = sub
+		context['form'] = form
 	else:
-		form = UnsubscribeForm(data=request.POST)
+		
+		sub = get_object_or_404(Subscriber, code=request.POST.get('code',None))
+		form = UnsubscribeForm(data=request.POST, instance=sub)
 		if form.is_valid():
 			sub = form.save()
 			context['unsubscribe'] = True
 			template = 'bye.html'
-
-	context['subscriber'] = sub
+		else:
+			template = 'unsubscribe.html'
+			context['subscriber'] = sub
+			context['form'] = form
+	
 	context =  get_site_settings(request, context)
 	
 	return render(request, template, context)

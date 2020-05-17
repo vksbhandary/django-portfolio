@@ -169,7 +169,8 @@ class Subscriber(models.Model):
     verified = models.BooleanField(default=False ,verbose_name = "Email verified subscriber")
     
     def save(self , *args, **kwargs):
-        self.code = get_random_string(50)
+        if not self.code:
+            self.code = get_random_string(50)
         super(Subscriber, self).save(*args, **kwargs)
 
 
