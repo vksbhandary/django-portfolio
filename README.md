@@ -12,6 +12,8 @@ This project has following modules:
 - Google analytic integrations
 - Sitemaps
 - Post Feed
+- SEO optimization
+- Social media sharing (facebook, twitter and linkedin)
 - Email newstellers (incomplete)
 
 
