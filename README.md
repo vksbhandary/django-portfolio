@@ -1,6 +1,5 @@
 <!--![Demo](https://i.ibb.co/zNvBTrJ/demo.png "Demo About page")-->
 # Django Portfolio
-***
 
 ## About
 This is [aldryn-django](https://github.com/divio/aldryn-django) project which can be used to build simple protfolio. This project is made with cost in mind as hosting this project on divio cloud is free of cost (see pricing [here](https://www.divio.com/pricing/)).
