@@ -73,11 +73,11 @@ class IndexedTimeStampedModel(models.Model):
 class SluggedModel(IndexedTimeStampedModel):
     class Meta:
         abstract = True
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(max_length=270,unique=True)
 
 
 class Tag(SluggedModel):
-    title= models.CharField(max_length=250,unique=True, verbose_name = "Tag name")
+    title = models.CharField(max_length=250,unique=True, verbose_name = "Tag name")
     count =  models.PositiveIntegerField(default=0,verbose_name = "Post Counts")
 
     def get_absolute_url(self):
