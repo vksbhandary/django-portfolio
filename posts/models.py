@@ -77,7 +77,7 @@ class SluggedModel(IndexedTimeStampedModel):
 
 
 class Tag(SluggedModel):
-    title= models.CharField(max_length=50,unique=True, verbose_name = "Tag name")
+    title= models.CharField(max_length=250,unique=True, verbose_name = "Tag name")
     count =  models.PositiveIntegerField(default=0,verbose_name = "Post Counts")
 
     def get_absolute_url(self):
@@ -103,7 +103,7 @@ class Post(SluggedModel):
         verbose_name = "Post"
     title = models.CharField(max_length=250,unique=True, verbose_name = "Post title")
     content = models.TextField(verbose_name = "Post Content")
-    summary = models.CharField(max_length=125, blank=True, default=None, null=True,verbose_name = "Post summary")
+    summary = models.CharField(max_length=250, blank=True, default=None, null=True,verbose_name = "Post summary")
     status = models.CharField(max_length=25, choices =DEFINED_POST_STATUS, default = 'draft', verbose_name = "Status")
     tag = models.ManyToManyField(Tag,blank=True, related_name ='post_tag', verbose_name = "Post Tags")
     author = models.ForeignKey(User, on_delete=models.CASCADE ,related_name ='post_author', verbose_name = "Author")
@@ -127,7 +127,7 @@ class Post(SluggedModel):
     def __str__(self):
             return self.title
     def save(self , *args, **kwargs):
-        slug = get_uniqueslug(Tag,self.title)
+        slug = get_uniqueslug(Post,self.title)
 
         # if the record being saved is new?
         if self.pk is None:
